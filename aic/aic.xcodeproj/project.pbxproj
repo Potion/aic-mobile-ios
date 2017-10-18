@@ -10,6 +10,7 @@
 		0E2D15591DA8134200D06A4A /* AICMemberAPIDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2D15581DA8134200D06A4A /* AICMemberAPIDataModel.swift */; };
 		1370EED7178BE85DDE6304C6 /* Pods_aicUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D20A3AD2F51D72F4885D678F /* Pods_aicUITests.framework */; };
 		28F7980E1E7B40E600D22E0E /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F7980D1E7B40E600D22E0E /* Common.swift */; };
+		29E0C4E21F8EC1EF005D158E /* NetworkModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E0C4E11F8EC1EF005D158E /* NetworkModels.swift */; };
 		32A2A7101E8079610025186F /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32A2A70F1E8079610025186F /* Config.plist */; };
 		E058B8B27010A08F5B2BD853 /* Pods_aic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 544B0D3199A7D98737E36C68 /* Pods_aic.framework */; };
 		E407F9E21C9A561E00E285B4 /* AudioPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E407F9E11C9A561E00E285B4 /* AudioPlayerView.swift */; };
@@ -185,6 +186,7 @@
 		223EFA1418FE36F1D127D26D /* Pods-aicTests.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aicTests.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-aicTests/Pods-aicTests.appstore.xcconfig"; sourceTree = "<group>"; };
 		27EC410D74F8C78F01DA4A38 /* Pods_aicRental.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_aicRental.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		28F7980D1E7B40E600D22E0E /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		29E0C4E11F8EC1EF005D158E /* NetworkModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModels.swift; sourceTree = "<group>"; };
 		2A7B05E6B794A5F31C41638B /* Pods-aicUITests.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aicUITests.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-aicUITests/Pods-aicUITests.appstore.xcconfig"; sourceTree = "<group>"; };
 		32A2A70F1E8079610025186F /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		34A42DED784747728FEECA5D /* Pods_aicTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_aicTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -587,6 +589,7 @@
 				E411DE801CCD50BE00E22047 /* AICTourStopModel.swift */,
 				E497FA5B1CFF3803007FA272 /* AICAppDataModel.swift */,
 				E43F368D1D2C31A400DA4DA6 /* AICSectionModel.swift */,
+				29E0C4E11F8EC1EF005D158E /* NetworkModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -950,6 +953,7 @@
 				TargetAttributes = {
 					E40D41C81C6CEBB700A57AF4 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = VY3V6Q3AXG;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -1250,6 +1254,7 @@
 				E411DE811CCD50BE00E22047 /* AICTourStopModel.swift in Sources */,
 				E497FA5C1CFF3803007FA272 /* AICAppDataModel.swift in Sources */,
 				E4F519DA1C88BD4900226188 /* Utilities.swift in Sources */,
+				29E0C4E21F8EC1EF005D158E /* NetworkModels.swift in Sources */,
 				E4875B3F1CE7CC3E000F0E6E /* MapViewController.swift in Sources */,
 				E4D1593D1CBC259900536B4D /* MapLocationAnnotationView.swift in Sources */,
 				E4F519C21C863E9200226188 /* SectionsContentView.swift in Sources */,
@@ -1495,7 +1500,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 0.5;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = VY3V6Q3AXG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1511,7 +1516,7 @@
 					"$(inherited)",
 				);
 				OTHER_SWIFT_FLAGS = "-DDEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.artic.anon-mobile-app";
+				PRODUCT_BUNDLE_IDENTIFIER = com.potiondesign.aic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "aic-bridging-header.h";
@@ -1531,7 +1536,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 0.5;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = VY3V6Q3AXG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1548,7 +1553,7 @@
 					"$(inherited)",
 				);
 				OTHER_SWIFT_FLAGS = "-DRELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.artic.anon-mobile-app";
+				PRODUCT_BUNDLE_IDENTIFIER = com.potiondesign.aic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "aic-bridging-header.h";
@@ -1675,7 +1680,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Art Institute Chicago (6CA8WK4597)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 0.5;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = VY3V6Q3AXG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1691,7 +1696,7 @@
 					"$(inherited)",
 				);
 				OTHER_SWIFT_FLAGS = "-DAPP_STORE";
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.artic.anon-mobile-app";
+				PRODUCT_BUNDLE_IDENTIFIER = com.potiondesign.aic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "aic-bridging-header.h";

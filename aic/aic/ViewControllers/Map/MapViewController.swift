@@ -43,6 +43,7 @@ class MapViewController: UIViewController {
     }
     
     let model = AICMapModel()
+	let networkModel = NetworkModel()
     
     // Layout
 
@@ -82,17 +83,21 @@ class MapViewController: UIViewController {
         // Load in floorplans + annoations from app data
         // (app data should be loaded if this function is firing)
         model.loadData()
+		
+		networkModel.loadData()
         
         // Add Subviews
         view.addSubview(mapView)
         view.addSubview(floorSelectorVC.view)
         
         // Set the overlay for the background
-        mapView.add(mapViewBackgroundOverlay, level: .aboveRoads)
+        //mapView.add(mapViewBackgroundOverlay, level: .aboveRoads)
         
         mapView.camera.heading = mapView.defaultHeading
         mapView.camera.altitude = Common.Map.ZoomLevelAltitude.zoomedOut.rawValue
         mapView.camera.centerCoordinate = model.floors.first!.overlay.coordinate
+		
+		mapView.showsBuildings = true
         
         // Set Delegates
         mapView.delegate = self
@@ -118,6 +123,11 @@ class MapViewController: UIViewController {
                                                selector: #selector(MapViewController.updateMapWithTimer),
                                                userInfo: nil,
                                                repeats: true)
+		
+		let topLeft = MKCoordinateForMapPoint(Common.Map.coordinateConverter.MKMapPointFromPDFPoint(CGPoint(x:0, y:0)))
+		let bottomRight = MKCoordinateForMapPoint(Common.Map.coordinateConverter.MKMapPointFromPDFPoint(CGPoint(x:2400, y:2400)))
+		print("topLeft \(topLeft)")
+		print("bottomRight \(bottomRight)")
     }
     
     //Set the color of the background overlay
@@ -340,6 +350,8 @@ class MapViewController: UIViewController {
         
         // Set the overlay
         mapView.floorplanOverlay = model.floors[floorNum].overlay
+		
+		self.mapView.renderer(for: model.floors[floorNum].overlay)?.alpha = 0.5
         
         // Add annotations
         if mode == .allInformation {
@@ -425,19 +437,19 @@ class MapViewController: UIViewController {
         switch mapView.currentZoomLevel {
         case .zoomedOut:
             mapView.departmentHud.hide()
-            mapView.addAnnotations(model.landmarkAnnotations)
+            //mapView.addAnnotations(model.landmarkAnnotations)
             break
             
         case .zoomedIn:
             mapView.departmentHud.hide()
-            mapView.addAnnotations(model.floors[currentFloor].amenityAnnotations)
-            mapView.addAnnotations(model.floors[currentFloor].departmentAnnotations)
+            //mapView.addAnnotations(model.floors[currentFloor].amenityAnnotations)
+            //mapView.addAnnotations(model.floors[currentFloor].departmentAnnotations)
             break
             
         case .zoomedDetail, .zoomedMax:
-            mapView.departmentHud.show()
-            mapView.addAnnotations(model.floors[currentFloor].galleryAnnotations)
-            mapView.addAnnotations(model.floors[currentFloor].objectAnnotations)
+            //mapView.departmentHud.show()
+            //mapView.addAnnotations(model.floors[currentFloor].galleryAnnotations)
+            //mapView.addAnnotations(model.floors[currentFloor].objectAnnotations)
             
             break
         }
