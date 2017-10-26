@@ -57,6 +57,9 @@ class MapViewController: UIViewController {
     // Floor Selector
     let floorSelectorVC = MapFloorSelectorViewController()
     let floorSelectorMargin = CGPoint(x: 20, y: 40)
+	
+	// Polyline
+	var polyline: MKPolyline?
     
     fileprivate(set) var previousFloor:Int = Common.Map.startFloor
     fileprivate(set) var currentFloor:Int = Common.Map.startFloor
@@ -89,15 +92,15 @@ class MapViewController: UIViewController {
         // Add Subviews
         view.addSubview(mapView)
         view.addSubview(floorSelectorVC.view)
-        
+		
         // Set the overlay for the background
-        //mapView.add(mapViewBackgroundOverlay, level: .aboveRoads)
+        mapView.add(mapViewBackgroundOverlay, level: .aboveRoads)
         
         mapView.camera.heading = mapView.defaultHeading
         mapView.camera.altitude = Common.Map.ZoomLevelAltitude.zoomedOut.rawValue
         mapView.camera.centerCoordinate = model.floors.first!.overlay.coordinate
 		
-		mapView.showsBuildings = true
+		mapView.showsBuildings = false
         
         // Set Delegates
         mapView.delegate = self
@@ -109,9 +112,13 @@ class MapViewController: UIViewController {
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(MapViewController.mapViewWasPanned(_:)))
         panGesture.delegate = self
+		
+		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(MapViewController.mapViewWasTapped(_:)))
+		tapGesture.delegate = self
         
         mapView.addGestureRecognizer(pinchGesture)
         mapView.addGestureRecognizer(panGesture)
+		mapView.addGestureRecognizer(tapGesture)
         
         // Init map
         updateMapForModeChange(andStorePreviousMode: .disabled)
@@ -351,7 +358,7 @@ class MapViewController: UIViewController {
         // Set the overlay
         mapView.floorplanOverlay = model.floors[floorNum].overlay
 		
-		self.mapView.renderer(for: model.floors[floorNum].overlay)?.alpha = 0.5
+		//self.mapView.renderer(for: model.floors[floorNum].overlay)?.alpha = 0.5
         
         // Add annotations
         if mode == .allInformation {
@@ -372,7 +379,7 @@ class MapViewController: UIViewController {
     // Clears out all of the locations + tour objects
     // currently set for floors
     
-    internal func updateMapWithTimer() {
+	@objc internal func updateMapWithTimer() {
         updateAnnotations()
     }
     
@@ -546,7 +553,9 @@ extension MapViewController : MKMapViewDelegate {
      and the overlay for the current floorplan
     */
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        // Floorplan Overlay
+		print(self.mapView.overlays.count)
+		
+		// Floorplan Overlay
         if (overlay.isKind(of: FloorplanOverlay.self)) {
             let renderer: FloorplanOverlayRenderer = FloorplanOverlayRenderer(overlay: overlay as MKOverlay)
             return renderer
@@ -564,6 +573,17 @@ extension MapViewController : MKMapViewDelegate {
             
             return renderer
         }
+		
+		// Gradient Polyline
+		if overlay is MKPolyline {
+			/* define a list of colors you want in your gradient */
+			let gradientColors = [UIColor.green, UIColor.blue, UIColor.yellow, UIColor.red]
+			/* Initialise a JLTGradientPathRenderer with the colors */
+			let polylineRenderer = JLTGradientPathRenderer(polyline: overlay as! MKPolyline, colors: gradientColors)
+			/* set a linewidth */
+			polylineRenderer.lineWidth = 7
+			return polylineRenderer
+		}
         
         NSException(name:NSExceptionName(rawValue: "InvalidMKOverlay"), reason:"Did you add an overlay but forget to provide a matching renderer here? The class was type \(type(of: overlay))", userInfo:["wasClass": type(of: overlay)]).raise()
         return MKOverlayRenderer()
@@ -629,7 +649,7 @@ extension MapViewController : MKMapViewDelegate {
             //let objectIdentifier = String(objectAnnotation.object.nid)
             let objectIdentifier = String(MapObjectAnnotationView.reuseIdentifier)
             
-            guard let view = mapView.dequeueReusableAnnotationView(withIdentifier: objectIdentifier!) as? MapObjectAnnotationView else {
+			guard let view = mapView.dequeueReusableAnnotationView(withIdentifier: objectIdentifier) as? MapObjectAnnotationView else {
                 let view = MapObjectAnnotationView(annotation: objectAnnotation, reuseIdentifier: objectIdentifier)
                 view.delegate = self
                 return view
@@ -782,14 +802,39 @@ extension MapViewController : UIGestureRecognizerDelegate {
         return true
     }
     
-    func mapViewWasPinched(_ gesture:UIPinchGestureRecognizer) {
+	@objc func mapViewWasPinched(_ gesture:UIPinchGestureRecognizer) {
         floorSelectorVC.disableUserHeading()
     }
     
-    func mapViewWasPanned(_ gesture:UIPanGestureRecognizer) {
+	@objc func mapViewWasPanned(_ gesture:UIPanGestureRecognizer) {
         floorSelectorVC.disableUserHeading()
         mapView.keepMapInView()
     }
+	
+	@objc func mapViewWasTapped(_ gesture:UITapGestureRecognizer) {
+		let source = networkModel.getNode(Int(arc4random_uniform(3)))!
+		let destination = networkModel.getNode(Int(arc4random_uniform(4) + 3))!
+		let path = networkModel.shortestPath(source: source, destination: destination)
+		var sequence = [Int]()
+		if let succession: [Int] = path?.array.reversed().flatMap({ $0 as NodeModel}).map({$0.nid}) {
+			sequence = succession
+			print("🏁 Quickest path: \(succession)")
+		} else {
+			print("💥 No path between \(source.nid) & \(destination.nid)")
+		}
+		
+		var locations = [CLLocationCoordinate2D]()
+		for nodeId: Int in sequence {
+			locations.append(networkModel.nodes[nodeId].coordinate)
+		}
+		
+		if let polylineOverlay: MKPolyline = polyline {
+			mapView.remove(polylineOverlay)
+		}
+		
+		polyline = MKPolyline(coordinates: &locations, count: locations.count)
+		mapView.add(polyline!)
+	}
 }
 
 // MARK: - CLLocationManagerDelegate

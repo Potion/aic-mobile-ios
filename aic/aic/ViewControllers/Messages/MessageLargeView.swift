@@ -131,8 +131,8 @@ class MessageLargeView: BaseView {
             if let cancelButton = cancelButton {
                 cancelButton.snp.makeConstraints({ (make) in
                     make.top.equalTo(actionButton.snp.bottom).offset(cancelButtonMarginTop)
-                    make.left.right.equalTo(cancelButton.superview!)
-                    make.bottom.equalTo(cancelButton.superview!)
+					make.left.right.equalTo(cancelButton.superview!)
+					make.bottom.equalTo(cancelButton.superview!)
                 })
             }
             

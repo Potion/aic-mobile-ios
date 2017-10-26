@@ -10,7 +10,26 @@ protocol NewsToursSectionViewControllerDelegate : class {
     func newsToursSectionViewController(_ controller: NewsToursSectionViewController, didCloseReveal reveal:NewsToursRevealView)
 }
 
-class NewsToursSectionViewController : SectionViewController {
+class NewsToursSectionViewController : SectionViewController, NewsToursTableViewCellDelegate, UITableViewDelegate, UITableViewDataSource {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		assertionFailure("NewsToursSectionViewController numberOfRowsInSectionCalled, this method needs to be overriden by derived class")
+		return 0
+	}
+	
+	@objc(tableView:cellForRowAtIndexPath:) func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		if let cell = cells.filter({$0.tag == (indexPath as NSIndexPath).row}).first {
+			return cell
+		}
+		
+		let newsToursCell = NewsToursTableViewCell(model: getModel(forRow: (indexPath as NSIndexPath).row)!)
+		newsToursCell.delegate = self
+		newsToursCell.tag = (indexPath as NSIndexPath).row
+		setAdditionalInformation(forCell: newsToursCell)
+		
+		cells.append(newsToursCell)
+		return newsToursCell
+	}
+	
     weak var newsToursDelegate: NewsToursSectionViewControllerDelegate? = nil
     
     var listTableView:UITableView!
@@ -38,7 +57,7 @@ class NewsToursSectionViewController : SectionViewController {
         
         listTableView.register(NewsToursTableViewCell.self, forCellReuseIdentifier: "cell")
         
-        let revealCloseTap = UITapGestureRecognizer(target: self, action: #selector(NewsToursSectionViewController.revealViewCloseButtonTapped))
+		let revealCloseTap = UITapGestureRecognizer(target: self, action: #selector(NewsToursSectionViewController.revealViewCloseButtonTapped))
         sectionView.revealView.closeButton.addGestureRecognizer(revealCloseTap)
     }
     
@@ -110,70 +129,45 @@ class NewsToursSectionViewController : SectionViewController {
         
         self.view.updateConstraints()
     }
-}
-
-// MARK: UICollectionViewDataSource
-extension NewsToursSectionViewController : UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-}
-
-extension NewsToursSectionViewController : UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        assertionFailure("NewsToursSectionViewController numberOfRowsInSectionCalled, this method needs to be overriden by derived class")
-        return 0
-    }
-    
-    @objc(tableView:cellForRowAtIndexPath:) func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = cells.filter({$0.tag == (indexPath as NSIndexPath).row}).first {
-            return cell
-        }
-        
-        let newsToursCell = NewsToursTableViewCell(model: getModel(forRow: (indexPath as NSIndexPath).row)!)
-        newsToursCell.delegate = self
-        newsToursCell.tag = (indexPath as NSIndexPath).row
-        setAdditionalInformation(forCell: newsToursCell)
-        
-        cells.append(newsToursCell)
-        return newsToursCell
-    }
-}
-
-extension NewsToursSectionViewController : NewsToursTableViewCellDelegate {
-    func newsToursTableViewCellWasTapped(_ cell: NewsToursTableViewCell) {
-        if cell.mode == .closed {
-            self.closeAllListCells(withAnimation: false, andUpdateTable: false)
-            cell.mode = .open
-            
-            self.listTableView.beginUpdates()
-            self.listTableView.endUpdates()
-        } else {
-            self.closeAllListCells(withAnimation: false)
-        }
-        
-        self.sectionView.updateConstraints()
-        
-        self.sectionView.scrollView.setNeedsLayout()
-        self.sectionView.scrollView.layoutIfNeeded()
-        self.sectionView.scrollView.setNeedsDisplay()
-        
-        // Scroll to the top of this item, making sure it doesn't end up above the bottom
-        let maxYOffset = sectionView.scrollView.contentSize.height - sectionView.scrollView.bounds.size.height
-        
-        var yOffset = self.listTableView.frame.origin.y + self.listTableView.rectForRow(at: IndexPath(item: cell.tag, section: 0)).origin.y - self.sectionView.titleView.minimizedHeight
-        
-        if yOffset > maxYOffset {
-            yOffset = maxYOffset
-        }
-        
-        self.sectionView.scrollView.setContentOffset(CGPoint(x: 0, y: yOffset), animated: false)
-    }
-    
-    func newsToursTableViewCellRevealContentTapped(_ cell: NewsToursTableViewCell) {
-        showReveal(forModel: cell.model)
-    }
+	
+	// MARK: UICollectionViewDataSource
+	func newsToursTableViewCellWasTapped(_ cell: NewsToursTableViewCell) {
+		if cell.mode == .closed {
+			self.closeAllListCells(withAnimation: false, andUpdateTable: false)
+			cell.mode = .open
+			
+			self.listTableView.beginUpdates()
+			self.listTableView.endUpdates()
+		} else {
+			self.closeAllListCells(withAnimation: false)
+		}
+		
+		self.sectionView.updateConstraints()
+		
+		self.sectionView.scrollView.setNeedsLayout()
+		self.sectionView.scrollView.layoutIfNeeded()
+		self.sectionView.scrollView.setNeedsDisplay()
+		
+		// Scroll to the top of this item, making sure it doesn't end up above the bottom
+		let maxYOffset = sectionView.scrollView.contentSize.height - sectionView.scrollView.bounds.size.height
+		
+		var yOffset = self.listTableView.frame.origin.y + self.listTableView.rectForRow(at: IndexPath(item: cell.tag, section: 0)).origin.y - self.sectionView.titleView.minimizedHeight
+		
+		if yOffset > maxYOffset {
+			yOffset = maxYOffset
+		}
+		
+		self.sectionView.scrollView.setContentOffset(CGPoint(x: 0, y: yOffset), animated: false)
+	}
+	
+	func newsToursTableViewCellRevealContentTapped(_ cell: NewsToursTableViewCell) {
+		showReveal(forModel: cell.model)
+	}
+	
+	func numberOfSections(in tableView: UITableView) -> Int {
+		// #warning Incomplete implementation, return the number of sections
+		return 1
+	}
 }
 
 extension NewsToursSectionViewController : CLLocationManagerDelegate {
@@ -187,7 +181,7 @@ extension NewsToursSectionViewController : CLLocationManagerDelegate {
 
 // Reveal view gestures
 extension NewsToursSectionViewController {
-    func revealViewCloseButtonTapped() {
+	@objc func revealViewCloseButtonTapped() {
         let sectionView = self.sectionView as! NewsToursSectionView
         sectionView.mode = .list
         

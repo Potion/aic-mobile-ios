@@ -50,25 +50,21 @@ class WhatsOnSectionViewController : NewsToursSectionViewController {
             }
         }
     }
-}
-
-// MARK: UITableViewDelegate
-extension WhatsOnSectionViewController {
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
-    }
-}
-
-extension WhatsOnSectionViewController {
-    override func newsToursTableViewCellWasTapped(_ cell: NewsToursTableViewCell) {
-        super.newsToursTableViewCellWasTapped(cell)
-        if cell.mode == .open {
-            AICAnalytics.sendNewsItemExpandedEvent(forNewsItem: cell.model as! AICNewsItemModel)
-        }
-    }
-    
-    override func newsToursTableViewCellRevealContentTapped(_ cell: NewsToursTableViewCell) {
-        super.newsToursTableViewCellRevealContentTapped(cell)
-        delegate?.whatsOnSectionViewController(self, shouldShowNewsItemOnMap: cell.model as! AICNewsItemModel)
-    }
+	
+	// MARK: UITableViewDelegate
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return items.count
+	}
+	
+	override func newsToursTableViewCellWasTapped(_ cell: NewsToursTableViewCell) {
+		super.newsToursTableViewCellWasTapped(cell)
+		if cell.mode == .open {
+			AICAnalytics.sendNewsItemExpandedEvent(forNewsItem: cell.model as! AICNewsItemModel)
+		}
+	}
+	
+	override func newsToursTableViewCellRevealContentTapped(_ cell: NewsToursTableViewCell) {
+		super.newsToursTableViewCellRevealContentTapped(cell)
+		delegate?.whatsOnSectionViewController(self, shouldShowNewsItemOnMap: cell.model as! AICNewsItemModel)
+	}
 }

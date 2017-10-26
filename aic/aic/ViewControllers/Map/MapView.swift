@@ -49,7 +49,12 @@ class MapView: MKMapView {
         
         self.frame = CGRect(x: 0,y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         
-        mapType = .standard
+		if #available(iOS 11.0, *) {
+			mapType = .mutedStandard
+		} else {
+			// Fallback on earlier versions
+			mapType = .standard
+		}
         userTrackingMode = .none
         
         isScrollEnabled = true

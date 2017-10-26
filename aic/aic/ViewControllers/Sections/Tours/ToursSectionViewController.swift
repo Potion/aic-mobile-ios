@@ -114,10 +114,8 @@ class ToursSectionViewController : NewsToursSectionViewController {
     func forceReset() {
         super.reset()
     }
-}
-
+	
 // MARK: UITableViewDelegate
-extension ToursSectionViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
