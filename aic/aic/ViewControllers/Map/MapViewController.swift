@@ -60,6 +60,7 @@ class MapViewController: UIViewController {
 	
 	// Polyline
 	var polyline: MKPolyline?
+	var pathIdx: Int = 0
     
     fileprivate(set) var previousFloor:Int = Common.Map.startFloor
     fileprivate(set) var currentFloor:Int = Common.Map.startFloor
@@ -577,11 +578,11 @@ extension MapViewController : MKMapViewDelegate {
 		// Gradient Polyline
 		if overlay is MKPolyline {
 			/* define a list of colors you want in your gradient */
-			let gradientColors = [UIColor.green, UIColor.blue, UIColor.yellow, UIColor.red]
+			let gradientColors = [UIColor.blue, UIColor.red]
 			/* Initialise a JLTGradientPathRenderer with the colors */
 			let polylineRenderer = JLTGradientPathRenderer(polyline: overlay as! MKPolyline, colors: gradientColors)
 			/* set a linewidth */
-			polylineRenderer.lineWidth = 7
+			polylineRenderer.lineWidth = 20
 			return polylineRenderer
 		}
         
@@ -812,8 +813,11 @@ extension MapViewController : UIGestureRecognizerDelegate {
     }
 	
 	@objc func mapViewWasTapped(_ gesture:UITapGestureRecognizer) {
-		let source = networkModel.getNode(Int(arc4random_uniform(3)))!
-		let destination = networkModel.getNode(Int(arc4random_uniform(4) + 3))!
+		let pathDestination = [8, 9, 10]
+		
+		
+		let source = networkModel.getNode(0)!
+		let destination = networkModel.getNode(pathDestination[pathIdx])!
 		let path = networkModel.shortestPath(source: source, destination: destination)
 		var sequence = [Int]()
 		if let succession: [Int] = path?.array.reversed().flatMap({ $0 as NodeModel}).map({$0.nid}) {
@@ -834,6 +838,11 @@ extension MapViewController : UIGestureRecognizerDelegate {
 		
 		polyline = MKPolyline(coordinates: &locations, count: locations.count)
 		mapView.add(polyline!)
+		
+		pathIdx = pathIdx + 1
+		if pathIdx > 2 {
+			pathIdx = 0
+		}
 	}
 }
 
