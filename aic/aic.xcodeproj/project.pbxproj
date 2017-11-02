@@ -38,6 +38,9 @@
 		293D00AC1FA7CA6700BF2C26 /* video in Resources */ = {isa = PBXBuildFile; fileRef = 293D00AB1FA7CA6600BF2C26 /* video */; };
 		2994891F1FA3849C00943197 /* AICMuseumInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2994891E1FA3849C00943197 /* AICMuseumInfoModel.swift */; };
 		32A2A7101E8079610025186F /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32A2A70F1E8079610025186F /* Config.plist */; };
+		D6800F071FAB758C0075E5B3 /* AICPathOverlayRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6800F061FAB758C0075E5B3 /* AICPathOverlayRenderer.swift */; };
+		D6800F091FAB764C0075E5B3 /* AICPathOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6800F081FAB764C0075E5B3 /* AICPathOverlay.swift */; };
+		D6800F0B1FAB77BF0075E5B3 /* AICPathZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6800F0A1FAB77BF0075E5B3 /* AICPathZone.swift */; };
 		E058B8B27010A08F5B2BD853 /* Pods_aic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 544B0D3199A7D98737E36C68 /* Pods_aic.framework */; };
 		E407F9E21C9A561E00E285B4 /* AudioPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E407F9E11C9A561E00E285B4 /* AudioPlayerView.swift */; };
 		E407F9E61C9B225B00E285B4 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E407F9E51C9B225B00E285B4 /* SnapKit.framework */; };
@@ -235,6 +238,9 @@
 		C04250290B0C7900464F2D80 /* Pods-aicTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aicTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-aicTests/Pods-aicTests.release.xcconfig"; sourceTree = "<group>"; };
 		D07597879002299E573D5330 /* Pods-aicRental.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aicRental.debug.xcconfig"; path = "Pods/Target Support Files/Pods-aicRental/Pods-aicRental.debug.xcconfig"; sourceTree = "<group>"; };
 		D20A3AD2F51D72F4885D678F /* Pods_aicUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_aicUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6800F061FAB758C0075E5B3 /* AICPathOverlayRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICPathOverlayRenderer.swift; sourceTree = "<group>"; };
+		D6800F081FAB764C0075E5B3 /* AICPathOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICPathOverlay.swift; sourceTree = "<group>"; };
+		D6800F0A1FAB77BF0075E5B3 /* AICPathZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICPathZone.swift; sourceTree = "<group>"; };
 		E407F9E11C9A561E00E285B4 /* AudioPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerView.swift; sourceTree = "<group>"; };
 		E407F9E51C9B225B00E285B4 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		E40D41C91C6CEBB700A57AF4 /* aic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aic.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -489,6 +495,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D6800F051FAB756F0075E5B3 /* Pathfinding */ = {
+			isa = PBXGroup;
+			children = (
+				D6800F081FAB764C0075E5B3 /* AICPathOverlay.swift */,
+				D6800F061FAB758C0075E5B3 /* AICPathOverlayRenderer.swift */,
+				D6800F0A1FAB77BF0075E5B3 /* AICPathZone.swift */,
+			);
+			name = Pathfinding;
+			sourceTree = "<group>";
+		};
 		E40D41C01C6CEBB700A57AF4 = {
 			isa = PBXGroup;
 			children = (
@@ -624,6 +640,7 @@
 		E415ABC01C7298420093B719 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				D6800F051FAB756F0075E5B3 /* Pathfinding */,
 				E4875B3E1CE7CC3E000F0E6E /* MapViewController.swift */,
 				E4D790CA1C8E0AC10033EE0A /* MapView.swift */,
 				E4F37CBA1D36EB2A00BFB7E8 /* MapDepartmentHUDView.swift */,
@@ -968,6 +985,7 @@
 				TargetAttributes = {
 					E40D41C81C6CEBB700A57AF4 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 6CA8WK4597;
 						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -1306,6 +1324,7 @@
 				E415ABD91C7298420093B719 /* SectionsViewController.swift in Sources */,
 				E447397D1CAE01AC0011F059 /* NewsToursSectionViewController.swift in Sources */,
 				E4875B431CE8DBC1000F0E6E /* UIImage+AIC.swift in Sources */,
+				D6800F071FAB758C0075E5B3 /* AICPathOverlayRenderer.swift in Sources */,
 				E415ABD71C7298420093B719 /* AudioGuideViewController.swift in Sources */,
 				E447397F1CAE02870011F059 /* NewsToursSectionView.swift in Sources */,
 				E415ABD81C7298420093B719 /* NearbySectionViewController.swift in Sources */,
@@ -1319,6 +1338,7 @@
 				E4923FC11C9E00B500AB255C /* UIView+AIC.swift in Sources */,
 				E417B5271CA3200300C362A1 /* AudioGuideSectionView.swift in Sources */,
 				E4F519D91C88BD4900226188 /* MKMapRectRotated.swift in Sources */,
+				D6800F0B1FAB77BF0075E5B3 /* AICPathZone.swift in Sources */,
 				E45C2A1A1D3437C600B9E958 /* MapImageAnnotation.swift in Sources */,
 				E42178361CC6B80200815B41 /* InfoSectionTextField.swift in Sources */,
 				E417B52F1CA324E000C362A1 /* InfoSectionView.swift in Sources */,
@@ -1352,6 +1372,7 @@
 				E42677E31CC558060046BB27 /* AICButton.swift in Sources */,
 				E4F7AF971CFB673900524F87 /* AICMapFloorModel.swift in Sources */,
 				E47A972F1CF3EE140041D0A6 /* LoadingViewController.swift in Sources */,
+				D6800F091FAB764C0075E5B3 /* AICPathOverlay.swift in Sources */,
 				E47306E31D21DF5000A77254 /* MapState.swift in Sources */,
 				E4D1593B1CBC244900536B4D /* MapLocationAnnotation.swift in Sources */,
 				E4DDE3DB1CDA9E9C009399E2 /* AICNewsTourItemProtocol.swift in Sources */,
