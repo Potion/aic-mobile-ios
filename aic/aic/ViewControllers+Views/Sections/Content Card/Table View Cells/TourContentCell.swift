@@ -30,6 +30,8 @@ class TourContentCell : UITableViewCell {
 		
 		tourImageView.contentMode = .scaleAspectFill
 		tourImageView.clipsToBounds = true
+		startTourButton.titleLabel?.font = .aicButtonFont
+		descriptionLabel.font = .aicCardTextFont
 		stopsNumberLabel.font = .aicInfoOverlayFont
 		durationLabel.font = .aicInfoOverlayFont
 		transparentOverlayView.backgroundColor = UIColor(white: 0.0, alpha: 0.5)

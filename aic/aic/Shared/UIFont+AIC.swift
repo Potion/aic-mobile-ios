@@ -24,6 +24,8 @@ extension UIFont {
 	
 	static let aicTextFont: UIFont = UIFont(name: "IdealSans-Book", size: 16.0)!.upperCaseNumbers()
 	
+	static let aicDescriptionFont: UIFont = UIFont(name: "SabonNextLTPro-Regular", size: 16.0)!.upperCaseNumbers()
+	
 	static let aicButtonFont: UIFont = UIFont(name: "IdealSans-Medium", size: 13.0)!.upperCaseNumbers()
 	
 	static let aicPotionCreditsFont: UIFont = UIFont(name: "IdealSans-Book", size: 13.0)!.upperCaseNumbers()
@@ -78,6 +80,8 @@ extension UIFont {
 	
 	static let aicContentTitleFont: UIFont = UIFont(name: "IdealSans-Medium", size: 16.0)!.upperCaseNumbers()
 	
+	static let aicContentSubtitleFont: UIFont = UIFont(name: "IdealSans-Book", size: 16.0)!.upperCaseNumbers()
+	
 	static let aicMapCardTextFont: UIFont = UIFont(name: "IdealSans-Book", size: 16.0)!.upperCaseNumbers()
 	
 	static let aicMapFloorMenuFont: UIFont = UIFont(name: "IdealSans-Book", size: 16.0)!.upperCaseNumbers()
@@ -88,6 +92,10 @@ extension UIFont {
 	
 	static let aicMapDepartmentLabelFont: UIFont = UIFont(name: "IdealSans-Book", size: 13.0)!.upperCaseNumbers()
 	
+	static let aicSearchSuggestedFont: UIFont = UIFont(name: "IdealSans-Book", size: 16.0)!.upperCaseNumbers()
+	
+	static let aicSearchNoResultsMessageFont: UIFont = UIFont(name: "IdealSans-BookItalic", size: 16.0)!.upperCaseNumbers()
+	
 	static let aicSearchNoResultsWebsiteFont: UIFont = UIFont(name: "IdealSans-BookItalic", size: 13.0)!.upperCaseNumbers()
 	
 	static let aicTooltipTitleFont: UIFont = UIFont(name: "IdealSans-Medium", size: 21.0)!.upperCaseNumbers()
@@ -97,6 +105,8 @@ extension UIFont {
 	static let aicTooltipDismissFont: UIFont = UIFont(name: "IdealSans-Light", size: 13.0)!.upperCaseNumbers()
 	
 	static let aicInfoOverlayFont: UIFont = UIFont(name: "IdealSans-Book", size: 13.0)!.upperCaseNumbers()
+	
+	static let aicSeeAllTitleFont: UIFont = UIFont(name: "IdealSans-Medium", size: 17.0)!.upperCaseNumbers()
 	
 	static let aicSeeAllInfoFont: UIFont = UIFont(name: "IdealSans-Book", size: 12.0)!.upperCaseNumbers()
 	

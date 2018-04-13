@@ -30,9 +30,11 @@ class HomeTourCell : UICollectionViewCell {
 		tourImageView.clipsToBounds = true
 		stopsNumberLabel.font = .aicInfoOverlayFont
 		durationLabel.font = .aicInfoOverlayFont
+		tourTitleLabel.font = .aicTitleFont
 		tourTitleLabel.textColor = .aicDarkGrayColor
 		tourTitleLabel.numberOfLines = 0
 		tourTitleLabel.lineBreakMode = .byTruncatingTail
+		shortDescriptionTextView.font = .aicDescriptionFont
 		shortDescriptionTextView.textColor = .aicDarkGrayColor
 		shortDescriptionTextView.textContainerInset.left = -4
 		shortDescriptionTextView.textContainer.lineBreakMode = .byTruncatingTail

@@ -32,6 +32,10 @@ class ArtworkContentCell : UITableViewCell {
 		artworkImageView.clipsToBounds = true
 		showOnMapButton.setIconImage(image: #imageLiteral(resourceName: "buttonMapIcon"))
 		playAudioButton.setIconImage(image: #imageLiteral(resourceName: "buttonPlayIcon"))
+		showOnMapButton.titleLabel?.font = .aicButtonFont
+		playAudioButton.titleLabel?.font = .aicButtonFont
+		artistDisplayLabel.font = .aicCardTextFont
+		descriptionLabel.font = .aicCardTextFont
 	}
 	
 	var artworkModel: AICSearchedArtworkModel? = nil {
@@ -61,8 +65,10 @@ class ArtworkContentCell : UITableViewCell {
 			
 			artistDisplayLabel.attributedText = getAttributedStringWithLineHeight(text: artworkModel.artistDisplay, font: .aicCardTextFont, lineHeight: 22)
 			artistDisplayLabel.textColor = .white
+			artistDisplayLabel.font = .aicCardTextFont
 			
 			descriptionLabel.text = ""
+			descriptionLabel.font = .aicCardTextFont
 			
 			guard let _ = artworkModel.audioObject else {
 				playAudioButton.isHidden = true

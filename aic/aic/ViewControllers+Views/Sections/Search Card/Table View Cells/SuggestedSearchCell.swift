@@ -25,6 +25,7 @@ class SuggestedSearchCell : UITableViewCell {
 		
 		self.backgroundColor = .aicDarkGrayColor
 		
+		suggestedSearchLabel.font = .aicSearchSuggestedFont
 		suggestedSearchLabel.textColor = .white
 	}
 	

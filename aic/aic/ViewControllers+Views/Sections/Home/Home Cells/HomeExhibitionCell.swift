@@ -22,6 +22,7 @@ class HomeExhibitionCell : UICollectionViewCell {
 		
 		exhibitionImageView.contentMode = .scaleAspectFill
 		exhibitionImageView.clipsToBounds = true
+		exhibitionTitleLabel.font = .aicTitleFont
 		exhibitionTitleLabel.textColor = .aicDarkGrayColor
 		exhibitionTitleLabel.numberOfLines = 0
 		exhibitionTitleLabel.lineBreakMode = .byTruncatingTail

@@ -29,6 +29,7 @@
 		291AF3332033B2BE001099C7 /* MemberCard.strings in Resources */ = {isa = PBXBuildFile; fileRef = 291AF3352033B2BE001099C7 /* MemberCard.strings */; };
 		291EC72C1FE1E48600A43186 /* ResultsFilterMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291EC72B1FE1E48600A43186 /* ResultsFilterMenuView.swift */; };
 		291FB71F1FDA0905007794E0 /* SearchNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FB71E1FDA0905007794E0 /* SearchNavigationController.swift */; };
+		2926F2192081044600DE9D4A /* HomeExhibitionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2926F2182081044600DE9D4A /* HomeExhibitionCell.swift */; };
 		2931277A1FDEF2C5008BFAB1 /* MapItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293127791FDEF2C5008BFAB1 /* MapItemCell.swift */; };
 		2931277C1FDEF327008BFAB1 /* MapItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2931277B1FDEF327008BFAB1 /* MapItemCell.xib */; };
 		2931277F1FDF0EB5008BFAB1 /* ContentButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2931277E1FDF0EB5008BFAB1 /* ContentButtonCell.xib */; };
@@ -61,7 +62,6 @@
 		293D00A81FA7C82200BF2C26 /* map in Resources */ = {isa = PBXBuildFile; fileRef = 293D00A71FA7C82200BF2C26 /* map */; };
 		293D00AC1FA7CA6700BF2C26 /* video in Resources */ = {isa = PBXBuildFile; fileRef = 293D00AB1FA7CA6600BF2C26 /* video */; };
 		29412AEC1FCE1F44005A7172 /* HomeExhibitionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29412AEB1FCE1F44005A7172 /* HomeExhibitionCell.xib */; };
-		29412AEE1FCE1F7A005A7172 /* HomeExhibitionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29412AED1FCE1F7A005A7172 /* HomeExhibitionCell.swift */; };
 		2941CE7A1FE08EF400B7CCEE /* CardTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2941CE791FE08EF400B7CCEE /* CardTitleView.swift */; };
 		2941CE7C1FE0928D00B7CCEE /* TourContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2941CE7B1FE0928D00B7CCEE /* TourContentCell.swift */; };
 		2941CE7E1FE092AC00B7CCEE /* TourContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2941CE7D1FE092AC00B7CCEE /* TourContentCell.xib */; };
@@ -297,6 +297,7 @@
 		291AF3372033B2C3001099C7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MemberCard.strings"; sourceTree = "<group>"; };
 		291EC72B1FE1E48600A43186 /* ResultsFilterMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsFilterMenuView.swift; sourceTree = "<group>"; };
 		291FB71E1FDA0905007794E0 /* SearchNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNavigationController.swift; sourceTree = "<group>"; };
+		2926F2182081044600DE9D4A /* HomeExhibitionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeExhibitionCell.swift; sourceTree = "<group>"; };
 		293127791FDEF2C5008BFAB1 /* MapItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapItemCell.swift; sourceTree = "<group>"; };
 		2931277B1FDEF327008BFAB1 /* MapItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapItemCell.xib; sourceTree = "<group>"; };
 		2931277E1FDF0EB5008BFAB1 /* ContentButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentButtonCell.xib; sourceTree = "<group>"; };
@@ -329,7 +330,6 @@
 		293D00A71FA7C82200BF2C26 /* map */ = {isa = PBXFileReference; lastKnownFileType = folder; name = map; path = aic/Assets/map; sourceTree = SOURCE_ROOT; };
 		293D00AB1FA7CA6600BF2C26 /* video */ = {isa = PBXFileReference; lastKnownFileType = folder; name = video; path = aic/Assets/video; sourceTree = SOURCE_ROOT; };
 		29412AEB1FCE1F44005A7172 /* HomeExhibitionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeExhibitionCell.xib; sourceTree = "<group>"; };
-		29412AED1FCE1F7A005A7172 /* HomeExhibitionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeExhibitionCell.swift; path = "/repos/AIC/aic-mobile-ios/aic/aic/ViewControllers+Views/Sections/Home/Home Cells/HomeExhibitionCell.swift"; sourceTree = "<absolute>"; };
 		2941CE791FE08EF400B7CCEE /* CardTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTitleView.swift; sourceTree = "<group>"; };
 		2941CE7B1FE0928D00B7CCEE /* TourContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourContentCell.swift; sourceTree = "<group>"; };
 		2941CE7D1FE092AC00B7CCEE /* TourContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TourContentCell.xib; sourceTree = "<group>"; };
@@ -994,7 +994,7 @@
 			children = (
 				2902198F1FCE2AC8006CFA9E /* HomeEventCell.swift */,
 				2902198D1FCE2ABA006CFA9E /* HomeEventCell.xib */,
-				29412AED1FCE1F7A005A7172 /* HomeExhibitionCell.swift */,
+				2926F2182081044600DE9D4A /* HomeExhibitionCell.swift */,
 				29412AEB1FCE1F44005A7172 /* HomeExhibitionCell.xib */,
 				29C91B101FC4E5D8008C3E9E /* HomeTourCell.swift */,
 				29A27A071FCC769B007CEE1D /* HomeTourCell.xib */,
@@ -1688,7 +1688,6 @@
 				E43F368B1D2B2F9900DA4DA6 /* AICAnalytics.swift in Sources */,
 				291EC72C1FE1E48600A43186 /* ResultsFilterMenuView.swift in Sources */,
 				294C0B5E201A76F700F2ABB1 /* FloorplanOverlay.swift in Sources */,
-				29412AEE1FCE1F7A005A7172 /* HomeExhibitionCell.swift in Sources */,
 				294C0B52201A76F700F2ABB1 /* MapAmenityAnnotation.swift in Sources */,
 				E42178301CC57BE200815B41 /* UITextView+AIC.swift in Sources */,
 				290219901FCE2AC8006CFA9E /* HomeEventCell.swift in Sources */,
@@ -1805,6 +1804,7 @@
 				29E003EB2048561F00E1D305 /* RestaurantPageViewController.swift in Sources */,
 				29A7BD011FBF87D900FD8639 /* InfoViewController.swift in Sources */,
 				E47A972F1CF3EE140041D0A6 /* LoadingViewController.swift in Sources */,
+				2926F2192081044600DE9D4A /* HomeExhibitionCell.swift in Sources */,
 				2968F67920125B5700638153 /* MessageViewController.swift in Sources */,
 				294C0B68201A770E00F2ABB1 /* MapViewController.swift in Sources */,
 				2941CE821FE0D62E00B7CCEE /* ResultsContentTitleView.swift in Sources */,

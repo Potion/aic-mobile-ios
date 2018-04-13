@@ -28,16 +28,18 @@ class SeeAllTourCell : UICollectionViewCell {
 		tourImageView.contentMode = .scaleAspectFill
 		tourImageView.clipsToBounds = true
 		stopsNumberLabel.font = .aicSeeAllInfoFont
+		stopsNumberLabel.textColor = .aicMediumGrayColor
 		durationLabel.font = .aicSeeAllInfoFont
+		durationLabel.textColor = .aicMediumGrayColor
+		tourTitleLabel.font = .aicSeeAllTitleFont
 		tourTitleLabel.textColor = .aicDarkGrayColor
 		tourTitleLabel.numberOfLines = 2
 		tourTitleLabel.lineBreakMode = .byTruncatingTail
 		dividerLine.backgroundColor = .aicDividerLineColor
+		shortDescriptionTextView.font = .aicDescriptionFont
 		shortDescriptionTextView.textColor = .aicDarkGrayColor
 		shortDescriptionTextView.textContainerInset.left = -4
 		shortDescriptionTextView.textContainer.lineBreakMode = .byTruncatingTail
-		stopsNumberLabel.textColor = .aicMediumGrayColor
-		durationLabel.textColor = .aicMediumGrayColor
 	}
 	
 	var tourModel: AICTourModel? = nil {

@@ -28,9 +28,11 @@ class HomeEventCell : UICollectionViewCell {
 		eventImageView.clipsToBounds = true
 		monthDayLabel.font = .aicInfoOverlayFont
 		hoursMinutesLabel.font = .aicInfoOverlayFont
+		eventTitleLabel.font = .aicTitleFont
 		eventTitleLabel.textColor = .aicDarkGrayColor
 		eventTitleLabel.numberOfLines = 0
 		eventTitleLabel.lineBreakMode = .byTruncatingTail
+		shortDescriptionTextView.font = .aicDescriptionFont
 		shortDescriptionTextView.textColor = .aicDarkGrayColor
 		shortDescriptionTextView.textContainerInset.left = -4
 		shortDescriptionTextView.textContainer.lineBreakMode = .byTruncatingTail

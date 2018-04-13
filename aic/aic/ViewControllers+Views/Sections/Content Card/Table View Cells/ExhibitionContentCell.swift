@@ -34,6 +34,10 @@ class ExhibitionContentCell : UITableViewCell {
 		exhibitionImageView.clipsToBounds = true
 		showOnMapButton.setIconImage(image: #imageLiteral(resourceName: "buttonMapIcon"))
 		buyTicketsButton.setIconImage(image: #imageLiteral(resourceName: "buttonTicketIcon"))
+		showOnMapButton.titleLabel?.font = .aicButtonFont
+		buyTicketsButton.titleLabel?.font = .aicButtonFont
+		descriptionLabel.font = .aicCardTextFont
+		throughDateLabel.font = .aicCardTextItalicFont
 	}
 	
 	var exhibitionModel: AICExhibitionModel? = nil {

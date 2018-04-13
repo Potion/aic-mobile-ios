@@ -27,16 +27,18 @@ class SeeAllEventCell : UICollectionViewCell {
 		eventImageView.contentMode = .scaleAspectFill
 		eventImageView.clipsToBounds = true
 		monthDayLabel.font = .aicSeeAllInfoFont
+		monthDayLabel.textColor = .aicMediumGrayColor
 		hoursMinutesLabel.font = .aicSeeAllInfoFont
+		hoursMinutesLabel.textColor = .aicMediumGrayColor
+		eventTitleLabel.font = .aicSeeAllTitleFont
 		eventTitleLabel.textColor = .aicDarkGrayColor
 		eventTitleLabel.numberOfLines = 2
 		eventTitleLabel.lineBreakMode = .byTruncatingTail
 		dividerLine.backgroundColor = .aicDividerLineColor
+		shortDescriptionTextView.font = .aicDescriptionFont
 		shortDescriptionTextView.textColor = .aicDarkGrayColor
 		shortDescriptionTextView.textContainerInset.left = -4
 		shortDescriptionTextView.textContainer.lineBreakMode = .byTruncatingTail
-		monthDayLabel.textColor = .aicMediumGrayColor
-		hoursMinutesLabel.textColor = .aicMediumGrayColor
 	}
 	
 	var eventModel: AICEventModel? = nil {

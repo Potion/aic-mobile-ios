@@ -29,6 +29,7 @@ class NoResultsCell : UITableViewCell {
 		
 		self.backgroundColor = .aicDarkGrayColor
 		
+		noResultsLabel.font = .aicSearchNoResultsMessageFont
 		noResultsLabel.numberOfLines = 0
 		noResultsLabel.lineBreakMode = .byWordWrapping
 		noResultsLabel.textColor = .aicCardDarkTextColor
