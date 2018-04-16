@@ -36,7 +36,9 @@ Please note that while we took steps to generalize this project, it is not meant
     1. [Aligning the Map](#aligning-the-map)
 1. [Data](#data)
     1. [App Data](#app-data)
-    1. [Featured Exhibitions](#featured-exhibitions)
+    1. [Exhibitions](#exhibitions)
+    1. [Events](#events)
+    1. [Search](#search)
     1. [Member Card API](#member-card-api)
 1. [External Libs](#external-libs)
 1. [Analytics](#analytics)
@@ -86,7 +88,7 @@ This app is split into four distinct sections. In the future, additional section
       <ul>
         <li>Museum Information: basic museum info: hours, holidays, etc.</li>
         <li>Language Settings: allowing you to switch the language of the app to English, Spanish or Chinese.</li>
-        <li>Location Settings: allowing you to modify your preference for tracking your location in the museum</li>
+        <li>Location Settings: allowing you to modify your preference for tracking your location in the museum.</li>
       </ul>
     </td>
   </tr>
@@ -94,7 +96,7 @@ This app is split into four distinct sections. In the future, additional section
     <td><img src="Documentation/search.png" alt="Search Image"/></td>
     <td valign="top">
       <h3>Search</h3>
-      <p>Provides custom tours with unique audio content that work in tandem with the map and guide users on a narrated journey. This is the section that first appears when the app starts up, and is currently the main feature.</p>
+      <p>Provides the ability to search for artworks, tours and exhibitions currently on display at the museum. Using the search, users are also able to find the location on the map of artworks as well as gift shops, restrooms, dining locations and the member lounge.</p>
     </td>
   </tr>
 </table>
@@ -114,11 +116,8 @@ We included some SampleData with this repo, so you don't _need_ the CMS in order
 ### Prerequisites
 
 1. Mac OS X (tested with Sierra)
-1. Xcode 8+ (Swift 3 support)
-1. [Carthage](https://github.com/Carthage/Carthage)
+1. Xcode 9+ (Swift 4 support)
 1. [CocoaPods](https://cocoapods.org)
-
-Currently, we need both Carthage and CocoaPods to manage this project's dependencies. We need Google Analytics for tracking user sessions and actions throughout the app, but GA was not supported by Carthage during development. We may remove CocoaPods as a prerequisite in the future.
 
 Throughout this guide, we assume that you know the basics of using Git and Terminal, or another terminal emulator of your choice.
 
@@ -132,7 +131,7 @@ Clone this repo to your computer:
 git clone https://github.com/art-institute-of-chicago/aic-mobile-ios.git
 ```
 
-**Note:** We recommend against downloading the ZIP of this project to avoid "Missing Reference" issues. If you do download this project as a ZIP, you will need to fetch the `UIImageColors.swift` file from [jathu/UIImageColors](https://github.com/jathu/UIImageColors). Place the downloaded Swift file into the `aic/aic/ThirdParty/UIImageColors/` folder. This file will be automatically fetched if you clone the repository with Git.
+**Note:** We recommend against downloading the ZIP of this project to avoid "Missing Reference" issues.
 
 Once you have downloaded the repo, one way or another, open your terminal and change your directory to the top level of the project:
 
@@ -171,7 +170,6 @@ Go to Xcode, choose an iOS simulator (e.g. iPhone SE) for the `aic` build target
 
 **References:**
 * http://stackoverflow.com/questions/13695391/start-an-apache-server-in-any-directory-from-command-line
-* http://stackoverflow.com/questions/24583859/apache-localhost-username-not-working
 * http://stackoverflow.com/questions/24583859/apache-localhost-username-not-working
 
 
@@ -246,17 +244,6 @@ Here are the variables set through `Config.plist`:
     </td>
   </tr>
   <tr>
-    <td valign="top">appDataExternalPrefix</td>
-    <td valign="top">http://localhost:8888/</td>
-    <td valign="top" rowspan="2">
-      <p>All URLs in appDataJson will have instances of internalPrefix replaced with externalPrefix (<a href="#appdataexternalprefix--appdatainternalprefix">details</a>). </p>
-    </td>
-  </tr>
-  <tr>
-    <td valign="top">appDataInternalPrefix</td>
-    <td valign="top">http://localhost:8888/</td>
-  </tr>
-  <tr>
     <td valign="top">memberCardSOAPRequestURL</td>
     <td valign="top">http://localhost:8888/api/1?token=foobar</td>
     <td valign="top">
@@ -271,13 +258,7 @@ With this in mind, you will need to update `appDataJSON` with the full URL path 
 http://example.com/sites/default/files/appData.json
 ```
 
-Other settings maintained in `Common.swift` include text strings for various app sections and for the instruction slides that display when the app is launched for the first time, anchor points and bounding boxes for the PDF-based map view overlay, departmental map icon flag names, department titles, etc. For now, these sorts of hard-coded values will have to be modified in the code, but we are open to PRs that would help make it possible to define these things via the CMS.
-
-
-
-#### appDataExternalPrefix & appDataInternalPrefix
-
-In all URLs gathered from `appData.json`, [AppDataParser.swift](aic/aic/Data/AppDataParser.swift#L500) will replace instances of `appDataInternalPrefix` with `appDataExternalPrefix`. We needed this functionality because we draw our data from multiple APIs on the backend, and one of these APIs contains URLs that refer to a server that is accessible only behind our firewall. We needed to rewrite those URLs to point to our public server. This is a temporary measure that may be removed in the future. If you don't need this sort of functionality, feel free to set identical values for the two prefixes, and they should have no effect.
+Other settings maintained in `Common.swift` include text strings for various app sections and for the tooltip screens that display when the app is launched for the first time, anchor points and bounding boxes for the PDF-based map view overlay, departmental map icon flag names, department titles, etc. For now, these sorts of hard-coded values will have to be modified in the code, but we are open to PRs that would help make it possible to define these things via the CMS.
 
 
 
@@ -300,33 +281,43 @@ See the [Analytics](#analytics) section for more info.
 
 ## Map + Indoor Positioning
 
-The map in this application is a persistent background UI element and provides users with accurate location information throughout the Art Institutes galleries. To make indoor user-positioning as accurate as possible, the Art Institute has partnered with Apple via the [MapsConnect](https://mapsconnect.apple.com/) program. Through this program, we utilize Apple's [Indoor Survey App](https://itunes.apple.com/us/app/indoor-survey/id994269367?mt=8) to map the wireless signals throughout our buildings, creating a fingerprint of all of the areas of our venue.
+The map in this application provides users with accurate location information throughout the Art Institutes galleries. To make indoor user-positioning as accurate as possible, the Art Institute has partnered with Apple via the [MapsConnect](https://mapsconnect.apple.com/) program. Through this program, we utilize Apple's [Indoor Survey App](https://itunes.apple.com/us/app/indoor-survey/id994269367?mt=8) to map the wireless signals throughout our buildings, creating a fingerprint of all of the areas of our venue.
 
-These wireless fingerprints become a part Apple's venue database and are utilized by the CoreLocation API to place the users "blue dot" on the map. By utilizing [CoreLocation](https://developer.apple.com/reference/corelocation) in combination with the on-site survey, we are able to take advantage of advanced location metrics such as current floor level to provide a better navigation experience to our app users on-site.
+These wireless fingerprints become a part of Apple's venue database and are utilized by the CoreLocation API to place the users "blue dot" on the map. By utilizing [CoreLocation](https://developer.apple.com/reference/corelocation) in combination with the on-site survey, we are able to take advantage of advanced location metrics such as current floor level to provide a better navigation experience to our app users on-site.
 
 
 
 ### Map Overlay
 
-To present a custom map overlay on top of Apple's default map, we use custom PDFs that contain a rough outline of our galleries as derived from the CAD drawings of our museum. This is the same map that we utilize for our printed guides that are available to our on-site visitors. You can find the PDFs used for each floor level under `/aic/aic/Assets/map`. On compilation, Xcode takes these PDFs and automatically processes them for image tiling to optimize loading times at runtime.
+To present a custom map overlay on top of Apple's default map, we use custom PDFs that contain a rough outline of our galleries as derived from the CAD drawings of our museum. This is the same map that we utilize for our printed guides that are available to our on-site visitors. You can find the PDFs used for each floor level under `/SampleData`. The URLs to these PDF floor plans are parsed from `appData.json`. The app downloads these PDFs and processes them for image tiling to optimize loading times at runtime.
 
 
 
 ### Aligning the Map
 
-As a part of the Maps Connect program, we work with Apple to survey our site using higher-detailed floor plans than what we display in the app. Apple processes these plans and converts them into their custom Apple Venue Format (AVF), which is compatible with GeoJSON. As GeoJSON has latitude and longitude coordinates embedded within it, we are able to use these files to derive anchor points for our PDF overlay to ensure that "blue dot" locations displayed via CoreLocation align as closely as possible with our PDF overlay. These achor coordinates are defined in the `Common.swift` file inside of the `Map` struct with the `anchor1` and `anchor2` variables.
+As a part of the Maps Connect program, we work with Apple to survey our site using higher-detailed floor plans than what we display in the app. Apple processes these plans and converts them into their custom Apple Venue Format (AVF), which is compatible with GeoJSON. As GeoJSON has latitude and longitude coordinates embedded within it, we are able to use these files to derive anchor points for our PDF overlay to ensure that "blue dot" locations displayed via CoreLocation align as closely as possible with our PDF overlay. These achor coordinates are defined in the `appData.json` file in the `map_floors` json node. The app matches the `anchor_pixel_1` and `anchor_pixel_2` variables with the correspondent geolocations defined in `anchor_location_1` and `anchor_location_2`.
 
 
 
 ## Data
 
-The application currently uses three main data sources: app data, events, and membership. The first two are JSON documents; the latter is a custom SOAP API. This data is meant to be managed through the companion CMS, but as long as the expected data format is followed, feel free to serve the files statically (cf. [SampleData](SampleData)) or roll your own CMS.
+The application currently uses three main data sources: 
+
+- App data from the Mobile CMS
+- Data Aggregator
+- Membership API
+
+The first one is a JSON document.
+
+The Data Aggregator is AIC's own API and it inlcudes endpoints to different types of data. It's fully documented here [https://github.com/art-institute-of-chicago/data-aggregator](https://github.com/art-institute-of-chicago/data-aggregator).
+
+For membership the app is querying a custom SOAP API. This data is meant to be managed through the companion CMS, but as long as the expected data format is followed, feel free to serve the files statically (cf. [SampleData](SampleData)) or roll your own CMS.
 
 
 
 ### App Data
 
-The main app data is pulled from an external-facing server each time the application loads. This data includes galleries, objects (artworks), tours, and audio files. We've included [appData.json](SampleData/appData.json) to demonstrate how "real" data would look like.
+The main app data is pulled from an external-facing server each time the application loads. This data includes galleries, objects (artworks), tours, audio files, map floors overlays, map annotations, and other data api URLs. We've included [appData.json](SampleData/appData.json) to demonstrate how "real" data would look like.
 
 Here's a breakdown of the expected data format:
 
@@ -346,10 +337,12 @@ Here's a breakdown of the expected data format:
     "1052": {
 
       "nid": 1052,
-
-      // Galleries are referenced by title, not nid
-      // Objects and exhibits that refer to invalid galleries will be hidden
+		
       "title": "Allerton Building",
+      
+      // Galleries are referenced by gallery_id
+      // Objects and exhibits that refer to invalid galleries will be hidden
+      "gallery_id": "2147483642"
 
       // If true, objects from this gallery will be hidden
       "closed": false,
@@ -366,40 +359,52 @@ Here's a breakdown of the expected data format:
   },
 
   "objects": {
+  
     "1036": {
+    	"nid": 1036,
 
-      "nid": 1036,
+     	"location": "41.87964734443971, -87.62376828224376",
 
-      "location": "41.87964734443971, -87.62376828224376",
+      	// Should match one of the "galleries" by name
+      	"gallery_location": "Allerton Building",
+		
+		"title": "Artwork Title",
 
-      // Should match one of the "galleries"
-      "gallery_location": "Allerton Building",
+      	// Shown when the individual object is opened
+      	"large_image_full_path": "http://localhost:8888/placeholder.png",
 
-      "title": "Artwork Title",
+      	// Shown as circular thumbnail on the map
+      	"thumbnail_full_path": "http://localhost:8888/placeholder.png",
 
-      // Shown when the individual object is opened
-      "large_image_full_path": "http://localhost:8888/placeholder.png",
-
-      // Shown as circular thumbnail on the map
-      "thumbnail_full_path": "http://localhost:8888/placeholder.png",
-
-      // Should match one of the audio_files
-      // (This particular example refers to a non-existing entry)
-      "audio": [
-        1028
-      ]
-
+		// An audio commentary is a pair of selector number (to enter on the Audio Guide key pad) and the correspondent audio file.
+      	// The audio id should match one of the audio_files
+      	"audio_commentary": [
+      	  {
+			object_selector_number: "101",
+			audio: "1027"
+		  }
+      	]
     }
+    
   },
 
   "audio_files": {
 
     "1027": {
-
       "nid": 1027,
       "title": "Introduction to Tour",
       "audio_file_url": "http://localhost:8888/unfa.mp3",
-      "audio_transcript": "This is an introduction."
+      "audio_transcript": "This is an introduction.",
+      
+       // Translations is an array of nodes, each one containing all the content translated in a language that is not English.
+      "translations": [
+      		{
+				"language": "es",
+				"title": "Spanish Title",
+				"audio_file_url": "http://localhost:8888/unfa.mp3",
+				"audio_transcript": "Spanish transcript"
+			}
+      ]
     }
 
   },
@@ -407,6 +412,7 @@ Here's a breakdown of the expected data format:
   // Note that "tours" is an Array of Objects, not Object of Objects.
   // This inconsistency is kept for historical compatibility reasons.
   "tours": [
+  
     {
       "nid": 1023,
       "title": "Lorem Ipsum",
@@ -416,18 +422,36 @@ Here's a breakdown of the expected data format:
 
       // Should match one of the "audio_files"
       "tour_audio": 1027,
+      
+      // Location where the tour starts
+      "location": "41.87954599481745, -87.62390507490352",
+      
+      // Translations is an array of nodes, each one containing all the content translated in a language that is not English.
+      "translations": [
+      		{
+				"language": "es",
+				"title": "Spanish Title",
+				"description": "Spanish description",
+				"intro": "Spanish intro"
+			}
+      ],
 
-      // "stops" is also an Array of Objects!
-      "stops": [
+      // "tour_stops" is also an Array of Objects!
+      "tour_stops": [
         {
           // Does not have to be consecutive or integer
           "sort": 0,
 
-          // Should match one of the "audio_files"
-          "audio": 1027,
-
           // Should match one of the "objects"
-          "object": 1036
+          "object": 1036,
+
+          // Should match one of the "audio_files"
+          "audio_id": 1027,
+          
+          // An Audio Bumper plays at the end of a stop to provide directions to the next stop in the tour
+          // The audio bumper for this stop plays at the end of the previous stop
+          // Should match one of the "audio_files"
+          "audio_bumper": 1027
         }
       ]
     }
@@ -440,7 +464,13 @@ For more details, see [AppDataParser.swift](aic/aic/Data/AppDataParser.swift). I
 
 
 
-### Featured Exhibitions
+### Data API
+
+The `appData.json` file contains a list of URLs and API endpoints used throughout the app for retreiving the latest events and exhibitions as well as performing searches.
+
+
+
+#### Exhibitions
 
 This data feed is being recycled from the Art Institute of Chicago's website. It provides a list of current exhibitions, cross-referencing gallery and floor locations from the App Data file. Here is the annotated data structure:
 
@@ -478,13 +508,13 @@ This data feed is being recycled from the Art Institute of Chicago's website. It
 ]
 ```
 
-Check out this URL for the Art Institute of Chicago's "live" version:
+#### Events
 
-```
-http://www.artic.edu/exhibitions-json/featured-exhibitions
-```
 
-Please note that the app expects `exhibition_location` to match the `title` of one of the galleries listed in `appData.json`. If it cannot match the exhibit location, that exihibit will not appear in the app's "On View" section.
+
+#### Search
+
+
 
 For more details, see [AppDataParser.swift](aic/aic/Data/AppDataParser.swift#L53).
 
@@ -500,20 +530,22 @@ Our membership system is based on Gateway's [Galaxy Connect](http://www.gatewayt
 
 ## External Libs
 
-The application relies on a few external libs, all of which are built using [Carthage](https://github.com/Carthage/Carthage), with the exception of Google Analytics, which is managed by [CocoaPods](https://cocoapods.org/).
+The application relies on a few external libs, all of which are built using [Cocoapods](https://cocoapods.org/).
 
 - [PureLayout](https://github.com/PureLayout/PureLayout) is used for handling the layout and managing views.
-- [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) is used for parsing the App and Featured JSON data.
+- [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) is used for parsing the JSON data.
 - [SWXMLHash](https://github.com/drmohundro/SWXMLHash) is used for parsing the SOAP response from the Member Card API
 - [AlamoFire](https://github.com/Alamofire/Alamofire) is used for all networking requests of data, assets, SOAP, etc.
-- [UIImageColors](https://github.com/jathu/UIImageColors) is used to find color profiles in the audio player and create a complementary background gradient.
+- [Kingfisher](https://github.com/onevcat/Kingfisher) is used for asynchronously load and cache images retreived from the different APIs.
+- [Localize-Swift](https://github.com/marmelroy/Localize-Swift) is used for the localization of content in English, Spanish and Chinese
+- [Atributika](https://github.com/psharanda/Atributika) is used for rendering HTML tags into iOS's attributed strings (rich text)
 - [GoogleAnalytics](https://cocoapods.org/pods/GoogleAnalytics) provides data analytics on general app usage.
 
 
 
 ## Analytics
 
-The app uses Google Analytics. To use this libray, CocoaPods is required.
+The app uses Google Analytics, installed using CocoaPods.
 
 After running `install.sh`, you will need to configure [GoogleService-Info.plist](#googleservice-infoplist) to enable analytics.
 
