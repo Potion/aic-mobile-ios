@@ -21,7 +21,7 @@ class CardTitleView : UITableViewHeaderFooterView {
 		titleLabel.frame = CGRect(x: 16, y: 0, width: UIScreen.main.bounds.width - 32, height: 80)
 		titleLabel.textColor = .white
 		titleLabel.textAlignment = .center
-		titleLabel.font = .aicCardTitleFont
+		titleLabel.font = .aicTitleFont
 		titleLabel.numberOfLines = 0
 		titleLabel.lineBreakMode = .byTruncatingTail
 		

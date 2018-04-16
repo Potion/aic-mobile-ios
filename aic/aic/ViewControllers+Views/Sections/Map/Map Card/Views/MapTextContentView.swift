@@ -19,7 +19,7 @@ class MapTextContentView : UIView {
 		textLabel.text = text
 		textLabel.numberOfLines = 0
 		textLabel.textAlignment = .center
-		textLabel.font = .aicMapCardTextFont
+		textLabel.font = .aicPageTextFont
 		textLabel.textColor = .white
 		
 		self.addSubview(textLabel)

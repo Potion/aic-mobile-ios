@@ -24,14 +24,14 @@ class InfoPageView : UIView {
 		
 		titleLabel.textColor = .aicDarkGrayColor
 		titleLabel.textAlignment = .center
-		titleLabel.font = .aicInfoSectionTitleFont
+		titleLabel.font = .aicPageTitleFont
 		titleLabel.numberOfLines = 0
 		
 		dividerLine.backgroundColor = .aicDividerLineColor
 		
 		textView.setDefaultsForAICAttributedTextView()
 		textView.textColor = .aicDarkGrayColor
-		textView.font = .aicInfoSectionTextFont
+		textView.font = .aicPageTextFont
 		textView.textAlignment = .center
 		
 		self.addSubview(titleLabel)

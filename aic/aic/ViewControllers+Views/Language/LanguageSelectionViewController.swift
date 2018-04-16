@@ -47,7 +47,7 @@ class LanguageSelectionViewController : UIViewController {
 		
 		contentView.backgroundColor = .clear
 		
-		titleLabel.font = .aicLanguageSelectionTitleFont
+		titleLabel.font = .aicPageTitleFont
 		titleLabel.numberOfLines = 0
 		titleLabel.textColor = .white
 		titleLabel.textAlignment = .center
@@ -150,7 +150,7 @@ class LanguageSelectionViewController : UIViewController {
 		textAttrString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, textAttrString.length))
 		
 		subtitleLabel.attributedText = textAttrString
-		subtitleLabel.font = .aicLanguageSelectionTextFont
+		subtitleLabel.font = .aicPageTextFont
 		subtitleLabel.numberOfLines = 0
 		subtitleLabel.textColor = .white
 		subtitleLabel.textAlignment = .center

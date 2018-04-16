@@ -18,7 +18,7 @@ class HomeContentTitleView : UIView {
 		self.backgroundColor = .white
 		
 		contentTitleLabel.text = title
-		contentTitleLabel.font = .aicHomeCollectionTitleFont
+		contentTitleLabel.font = .aicContentTitleFont
 		contentTitleLabel.textColor = .aicDarkGrayColor
 		
 		seeAllButton.semanticContentAttribute = .forceRightToLeft

@@ -63,7 +63,7 @@ class InfoBecomeMemberView: BaseView {
 		
         joinPromptLabel.numberOfLines = 0
         joinPromptLabel.text = Common.Info.becomeMemberJoinPromptMessage
-        joinPromptLabel.font = .aicTextFont
+        joinPromptLabel.font = .aicPageTextFont
 		joinPromptLabel.textColor = .aicDarkGrayColor
         joinPromptLabel.textAlignment = .center
 		
@@ -75,10 +75,10 @@ class InfoBecomeMemberView: BaseView {
 		joinTextView.attributedText = joinAttrText
 		joinTextView.linkTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue : UIColor.aicInfoColor]
 		joinTextView.textAlignment = NSTextAlignment.center
-		joinTextView.font = .aicTextFont
+		joinTextView.font = .aicPageTextFont
 		
 		accessPromptLabel.text = Common.Info.becomeMemberAccessPrompt
-		accessPromptLabel.font = .aicTextFont
+		accessPromptLabel.font = .aicPageTextFont
 		accessPromptLabel.textColor = .aicDarkGrayColor
 		accessPromptLabel.textAlignment = NSTextAlignment.center
 		

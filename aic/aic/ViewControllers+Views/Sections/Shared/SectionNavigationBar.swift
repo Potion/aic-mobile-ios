@@ -63,7 +63,7 @@ class SectionNavigationBar : UIView {
 		
 		titleLabel.numberOfLines = 1
 		if section.nid == Section.home.rawValue {
-			titleLabel.font = .aicSectionBigTitleFont
+			titleLabel.font = .aicHomeSectionTitleFont
 			titleBottomMargin = -1
 		}
 		else {

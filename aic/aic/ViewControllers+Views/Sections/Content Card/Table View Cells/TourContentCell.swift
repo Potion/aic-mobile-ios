@@ -31,7 +31,7 @@ class TourContentCell : UITableViewCell {
 		tourImageView.contentMode = .scaleAspectFill
 		tourImageView.clipsToBounds = true
 		startTourButton.titleLabel?.font = .aicButtonFont
-		descriptionLabel.font = .aicCardTextFont
+		descriptionLabel.font = .aicTextFont
 		stopsNumberLabel.font = .aicInfoOverlayFont
 		durationLabel.font = .aicInfoOverlayFont
 		transparentOverlayView.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
@@ -50,7 +50,7 @@ class TourContentCell : UITableViewCell {
 			}
 			
 			tourImageView.kf.setImage(with: tourModel.imageUrl)
-			descriptionLabel.attributedText = getAttributedStringWithLineHeight(text: tourModel.longDescription, font: .aicCardTextFont, lineHeight: 22)
+			descriptionLabel.attributedText = getAttributedStringWithLineHeight(text: tourModel.longDescription, font: .aicTextFont, lineHeight: 22)
 			descriptionLabel.textColor = .white
 			stopsNumberLabel.text = "\(tourModel.stops.count) " + "Stops".localized(using: "Home")
 			if (tourModel.durationInMinutes ?? "").isEmpty {

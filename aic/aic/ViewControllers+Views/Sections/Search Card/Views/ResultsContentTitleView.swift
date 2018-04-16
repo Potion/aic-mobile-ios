@@ -24,7 +24,7 @@ class ResultsContentTitleView : UITableViewHeaderFooterView {
 		
 		dividerLine.backgroundColor = .aicDividerLineDarkColor
 		
-		contentTitleLabel.font = .aicHomeCollectionTitleFont
+		contentTitleLabel.font = .aicContentTitleFont
 		contentTitleLabel.textColor = .white
 		
 		seeAllButton.semanticContentAttribute = .forceRightToLeft

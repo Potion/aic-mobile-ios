@@ -34,7 +34,7 @@ class HomeTourCell : UICollectionViewCell {
 		tourTitleLabel.textColor = .aicDarkGrayColor
 		tourTitleLabel.numberOfLines = 0
 		tourTitleLabel.lineBreakMode = .byTruncatingTail
-		shortDescriptionTextView.font = .aicDescriptionFont
+		shortDescriptionTextView.font = .aicTextFont
 		shortDescriptionTextView.textColor = .aicDarkGrayColor
 		shortDescriptionTextView.textContainerInset.left = -4
 		shortDescriptionTextView.textContainer.lineBreakMode = .byTruncatingTail

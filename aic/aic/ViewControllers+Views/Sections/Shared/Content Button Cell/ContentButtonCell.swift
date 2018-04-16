@@ -35,9 +35,9 @@ class ContentButtonCell : UITableViewCell {
 		
 		itemImageView.contentMode = .scaleAspectFill
 		itemImageView.clipsToBounds = true
-		itemTitleLabel.font = .aicContentTitleFont
+		itemTitleLabel.font = .aicContentButtonTitleFont
 		itemTitleLabel.textColor = .white
-		itemSubtitleLabel.font = .aicContentSubtitleFont
+		itemSubtitleLabel.font = .aicContentButtonSubtitleFont
 		itemSubtitleLabel.textColor = .aicCardDarkTextColor
 		dividerLineTop.backgroundColor = .aicDividerLineDarkColor
 		dividerLineBottom.backgroundColor = .aicDividerLineDarkColor

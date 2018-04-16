@@ -65,13 +65,13 @@ class EventContentCell : UITableViewCell {
 			monthDayLabel.text = monthDayString
 			hoursMinutesLabel.text = hoursMinutesString
 			descriptionTextView.textColor = .white
-			locationAndDateLabel.attributedText = getAttributedStringWithLineHeight(text: locationAndDateString, font: .aicCardDateLocationFont, lineHeight: 22)
+			locationAndDateLabel.attributedText = getAttributedStringWithLineHeight(text: locationAndDateString, font: .aicTextItalicFont, lineHeight: 22)
 			
-			let emStyle = Style("em").font(.aicCardTextItalicFont)
-			let iStyle = Style("i").font(.aicCardTextItalicFont)
-			let strongStyle = Style("strong").font(.aicCardTextBoldFont)
-			let bStyle = Style("b").font(.aicCardTextBoldFont)
-			let allStyle = Style.font(.aicCardTextFont).baselineOffset(22.0 - Float(UIFont.aicTitleFont.pointSize))
+			let emStyle = Style("em").font(.aicTextItalicFont)
+			let iStyle = Style("i").font(.aicTextItalicFont)
+			let strongStyle = Style("strong").font(.aicTextBoldFont)
+			let bStyle = Style("b").font(.aicTextBoldFont)
+			let allStyle = Style.font(.aicTextFont).baselineOffset(22.0 - Float(UIFont.aicTitleFont.pointSize))
 			
 			let eventDescription = eventModel.longDescription
 				.replacingOccurrences(of: "</p>", with: "</p>\n")

@@ -22,7 +22,7 @@ class TooltipPopupPageView : UIView {
 		self.backgroundColor = .clear
 		
 		titleLabel.text = tooltip.title.localized(using: "Tooltips")
-		titleLabel.font = .aicTooltipTitleFont
+		titleLabel.font = .aicTitleFont
 		titleLabel.textColor = .white
 		titleLabel.textAlignment = .center
 		titleLabel.numberOfLines = 0
@@ -36,7 +36,7 @@ class TooltipPopupPageView : UIView {
 		}
 		
 		textLabel.text = tooltip.text.localized(using: "Tooltips")
-		textLabel.font = .aicTooltipTextFont
+		textLabel.font = .aicPageTextFont
 		textLabel.textColor = .white
 		textLabel.textAlignment = .center
 		textLabel.numberOfLines = 2

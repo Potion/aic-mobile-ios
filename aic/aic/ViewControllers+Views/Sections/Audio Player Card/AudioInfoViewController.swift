@@ -40,7 +40,7 @@ class AudioInfoViewController : UIViewController {
 		imageView.contentMode = .scaleAspectFit
 		imageView.clipsToBounds = true
 		
-		descriptionLabel.font = .aicCardTextFont
+		descriptionLabel.font = .aicTextFont
 		descriptionLabel.numberOfLines = 0
 		descriptionLabel.textColor = .white
 		
@@ -227,7 +227,7 @@ class AudioInfoViewController : UIViewController {
     }
 	
 	private func setDescription(description: String) {
-		descriptionLabel.attributedText = getAttributedStringWithLineHeight(text: description, font: .aicCardTextFont, lineHeight: 22)
+		descriptionLabel.attributedText = getAttributedStringWithLineHeight(text: description, font: .aicTextFont, lineHeight: 22)
 	}
 	
 	func reset() {

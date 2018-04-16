@@ -114,13 +114,13 @@ class MapArtworkContentView : UIView {
 		titleLabel.numberOfLines = 1
 		titleLabel.lineBreakMode = .byTruncatingTail
 		titleLabel.textAlignment = .left
-		titleLabel.font = .aicContentTitleFont
+		titleLabel.font = .aicContentButtonTitleFont
 		titleLabel.textColor = .white
 		
 		locationLabel.numberOfLines = 1
 		locationLabel.lineBreakMode = .byTruncatingTail
 		locationLabel.textAlignment = .left
-		locationLabel.font = .aicMapCardTextFont
+		locationLabel.font = .aicPageTextFont
 		locationLabel.textColor = .white
 		
 		audioButton.setImage(#imageLiteral(resourceName: "tourStopPlay"), for: .normal)

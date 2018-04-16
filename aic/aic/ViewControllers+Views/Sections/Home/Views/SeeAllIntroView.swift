@@ -17,7 +17,7 @@ class SeeAllIntroView : UICollectionReusableView {
 	static let bottomMargin: CGFloat = 32.0
 	
 	static func sizeForText(text: String) -> CGSize {
-		let textSize: CGSize = (text as NSString).boundingRect(with: CGSize(width: UIScreen.main.bounds.width - 32, height: 0), options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font : UIFont.aicTextFont], context: nil).size
+		let textSize: CGSize = (text as NSString).boundingRect(with: CGSize(width: UIScreen.main.bounds.width - 32, height: 0), options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font : UIFont.aicPageTextFont], context: nil).size
 		return CGSize(width: UIScreen.main.bounds.width - 32, height: textSize.height + SeeAllIntroView.topMargin + SeeAllIntroView.bottomMargin)
 	}
 	
@@ -26,7 +26,7 @@ class SeeAllIntroView : UICollectionReusableView {
 		
 		backgroundColor = .aicIntroTextBackgroundColor
 		
-		textLabel.font = .aicTextFont
+		textLabel.font = .aicPageTextFont
 		textLabel.textColor = .aicDarkGrayColor
 		textLabel.textAlignment = .center
 		textLabel.numberOfLines = 0

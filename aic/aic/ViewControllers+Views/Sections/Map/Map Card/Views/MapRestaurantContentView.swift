@@ -30,7 +30,7 @@ class MapRestaurantContentView : UIView {
 		titleLabel.numberOfLines = 1
 		titleLabel.lineBreakMode = .byTruncatingTail
 		titleLabel.textAlignment = .center
-		titleLabel.font = .aicMapCardTitleFont
+		titleLabel.font = .aicTitleFont
 		titleLabel.textColor = .white
 		
 		dividerLine.backgroundColor = .white
@@ -39,7 +39,7 @@ class MapRestaurantContentView : UIView {
 		descriptionLabel.numberOfLines = 2
 		descriptionLabel.lineBreakMode = .byWordWrapping
 		descriptionLabel.textAlignment = .left
-		descriptionLabel.font = .aicMapCardTextFont
+		descriptionLabel.font = .aicPageTextFont
 		descriptionLabel.textColor = .white
 		
 		// Add subviews

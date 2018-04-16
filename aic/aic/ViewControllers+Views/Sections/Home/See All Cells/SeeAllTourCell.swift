@@ -36,7 +36,7 @@ class SeeAllTourCell : UICollectionViewCell {
 		tourTitleLabel.numberOfLines = 2
 		tourTitleLabel.lineBreakMode = .byTruncatingTail
 		dividerLine.backgroundColor = .aicDividerLineColor
-		shortDescriptionTextView.font = .aicDescriptionFont
+		shortDescriptionTextView.font = .aicTextFont
 		shortDescriptionTextView.textColor = .aicDarkGrayColor
 		shortDescriptionTextView.textContainerInset.left = -4
 		shortDescriptionTextView.textContainer.lineBreakMode = .byTruncatingTail

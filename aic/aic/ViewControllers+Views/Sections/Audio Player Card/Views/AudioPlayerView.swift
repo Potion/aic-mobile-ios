@@ -22,7 +22,7 @@ class AudioPlayerView : BaseView {
         titleLabel.numberOfLines = 0
         titleLabel.textColor = .white
         titleLabel.textAlignment = .center
-        titleLabel.font = .aicAudioPlayerTrackTitleFont
+        titleLabel.font = .aicTitleFont
         
         timeRemainingLabel.numberOfLines = 1
         timeRemainingLabel.textColor = .aicCardDarkTextColor

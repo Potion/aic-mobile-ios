@@ -26,7 +26,7 @@ class TooltipArrowView : UIView {
 		backgroundView.backgroundColor = .aicTooltipBackgroundColor
 		
 		textLabel.text = tooltip.text
-		textLabel.font = .aicTooltipTextFont
+		textLabel.font = .aicPageTextFont
 		textLabel.textColor = .white
 		textLabel.textAlignment = .right
 		textLabel.numberOfLines = 1

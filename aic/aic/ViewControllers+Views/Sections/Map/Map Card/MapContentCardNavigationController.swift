@@ -41,7 +41,7 @@ class MapContentCardNavigationController: CardNavigationController {
 		titleLabel.numberOfLines = 1
 		titleLabel.lineBreakMode = .byTruncatingTail
 		titleLabel.textAlignment = .center
-		titleLabel.font = .aicMapCardTitleFont
+		titleLabel.font = .aicTitleFont
 		titleLabel.textColor = .white
 		
 		dividerLine.backgroundColor = .white

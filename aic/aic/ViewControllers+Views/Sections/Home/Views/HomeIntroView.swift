@@ -22,12 +22,12 @@ class HomeIntroView: UIView {
 		backgroundColor = .aicIntroTextBackgroundColor
 		
 		promptTextView.setDefaultsForAICAttributedTextView()
-		promptTextView.font = .aicTextFont
+		promptTextView.font = .aicPageTextFont
 		promptTextView.textColor = .aicDarkGrayColor
 		promptTextView.textAlignment = .center
 		
 		accessMemberCardButton.backgroundColor = .clear
-		accessMemberCardButton.titleLabel!.font = .aicTextFont
+		accessMemberCardButton.titleLabel!.font = .aicPageTextFont
 		accessMemberCardButton.setTitleColor(.aicHomeMemberPromptLinkColor, for: .normal)
 		
 		// Add subviews

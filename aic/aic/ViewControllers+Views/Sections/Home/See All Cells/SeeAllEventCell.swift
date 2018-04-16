@@ -35,7 +35,7 @@ class SeeAllEventCell : UICollectionViewCell {
 		eventTitleLabel.numberOfLines = 2
 		eventTitleLabel.lineBreakMode = .byTruncatingTail
 		dividerLine.backgroundColor = .aicDividerLineColor
-		shortDescriptionTextView.font = .aicDescriptionFont
+		shortDescriptionTextView.font = .aicTextFont
 		shortDescriptionTextView.textColor = .aicDarkGrayColor
 		shortDescriptionTextView.textContainerInset.left = -4
 		shortDescriptionTextView.textContainer.lineBreakMode = .byTruncatingTail

@@ -18,7 +18,7 @@ class SeeAllHeaderView : UICollectionReusableView {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		
-		titleLabel.font = .aicSeeAllHeaderFont
+		titleLabel.font = .aicTitleFont
 		titleLabel.textAlignment = .left
 		titleLabel.textColor = .aicDarkGrayColor
 		

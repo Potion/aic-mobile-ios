@@ -16,6 +16,7 @@
 		290A0FAE2044CF15000CDA8F /* Tooltips.strings in Resources */ = {isa = PBXBuildFile; fileRef = 290A0FB02044CF15000CDA8F /* Tooltips.strings */; };
 		290A0FB42044D105000CDA8F /* TooltipPopupPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290A0FB32044D105000CDA8F /* TooltipPopupPageView.swift */; };
 		290A0FB62044D60F000CDA8F /* TooltipArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290A0FB52044D60F000CDA8F /* TooltipArrowView.swift */; };
+		290B6CCB208510DE0022F6AE /* UIFont+FontNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B6CCA208510DE0022F6AE /* UIFont+FontNames.swift */; };
 		291221941FDB2BAD0096BB75 /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291221931FDB2BAC0096BB75 /* ResultsTableViewController.swift */; };
 		291221971FDB35650096BB75 /* SuggestedSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291221961FDB35650096BB75 /* SuggestedSearchCell.swift */; };
 		291221991FDB359D0096BB75 /* ResultsSectionTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291221981FDB359D0096BB75 /* ResultsSectionTitleView.swift */; };
@@ -238,6 +239,7 @@
 		290A0FB22044CF19000CDA8F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Tooltips.strings"; sourceTree = "<group>"; };
 		290A0FB32044D105000CDA8F /* TooltipPopupPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipPopupPageView.swift; sourceTree = "<group>"; };
 		290A0FB52044D60F000CDA8F /* TooltipArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipArrowView.swift; sourceTree = "<group>"; };
+		290B6CCA208510DE0022F6AE /* UIFont+FontNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+FontNames.swift"; sourceTree = "<group>"; };
 		291221931FDB2BAC0096BB75 /* ResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
 		291221961FDB35650096BB75 /* SuggestedSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedSearchCell.swift; sourceTree = "<group>"; };
 		291221981FDB359D0096BB75 /* ResultsSectionTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsSectionTitleView.swift; sourceTree = "<group>"; };
@@ -941,6 +943,7 @@
 				29DAF05E1FB3974F002ED862 /* LinkedTextView.swift */,
 				E421783B1CC6E1F300815B41 /* String+AIC.swift */,
 				E4D159301CB9A61F00536B4D /* UIFont+AIC.swift */,
+				290B6CCA208510DE0022F6AE /* UIFont+FontNames.swift */,
 				E4D790E11C90AD200033EE0A /* UIColor+AIC.swift */,
 				29BB93121FAA6A400034AEB4 /* UIDevice+Model.swift */,
 				E4923FC01C9E00B500AB255C /* UIView+AIC.swift */,
@@ -1577,6 +1580,7 @@
 				E4F7AF951CFB64DE00524F87 /* AICMapModel.swift in Sources */,
 				E4E108DC1C98A89A00385842 /* AICAudioFileModel.swift in Sources */,
 				E4F518FB1D2586B0004BFB44 /* AICImageView.swift in Sources */,
+				290B6CCB208510DE0022F6AE /* UIFont+FontNames.swift in Sources */,
 				294C0B4E201A76F700F2ABB1 /* MapLocationAnnotationView.swift in Sources */,
 				295AC0931FDF8FBA009A0FAF /* MuseumInfoViewController.swift in Sources */,
 				29824BD2200D8779003B6DB5 /* ArtworkTableViewController.swift in Sources */,

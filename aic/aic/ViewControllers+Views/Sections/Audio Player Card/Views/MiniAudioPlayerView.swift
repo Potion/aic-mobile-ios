@@ -29,7 +29,7 @@ class MiniAudioPlayerView : UIView {
         titleLabel.textColor = .white
         titleLabel.textAlignment = .left
         titleLabel.lineBreakMode = .byTruncatingTail
-        titleLabel.font = .aicMiniPlayerTrackTitleFont
+        titleLabel.font = .aicPageTextFont
         
         closeButton.backgroundColor = .clear
         closeButton.setImage(#imageLiteral(resourceName: "audioClose"), for: .normal)

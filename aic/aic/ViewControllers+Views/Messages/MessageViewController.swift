@@ -57,12 +57,12 @@ class MessageViewController : UIViewController {
 		
 		dividerLine.backgroundColor = .aicDividerLineTransparentColor
         
-        titleLabel.font = .aicLanguageSelectionTitleFont
+        titleLabel.font = .aicPageTitleFont
         titleLabel.numberOfLines = 0
         titleLabel.textColor = .white
         titleLabel.textAlignment = .center
         
-        messageLabel.font = .aicLanguageSelectionTextFont
+        messageLabel.font = .aicPageTextFont
         messageLabel.numberOfLines = 0
         messageLabel.textColor = .white
         messageLabel.textAlignment = .center

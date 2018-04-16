@@ -6,111 +6,79 @@
 import UIKit
 
 extension UIFont {
-	static let aicSectionBigTitleFont: UIFont = UIFont(name: "SourceSansPro-Regular", size: 40.0)!.upperCaseNumbers()
+	static let aicHomeSectionTitleFont: UIFont = UIFont(name: SansSerif_Medium, size: 40.0)!.upperCaseNumbers()
 	
-	static let aicSectionTitleFont: UIFont = UIFont(name: "SourceSansPro-Regular", size: 30.0)!.upperCaseNumbers()
+	static let aicSectionTitleFont: UIFont = UIFont(name: SansSerif_Medium, size: 30.0)!.upperCaseNumbers()
 	
-	static let aicSectionDescriptionFont: UIFont = UIFont(name: "Lora-Regular", size: 16.0)!.upperCaseNumbers()
+	static let aicSectionDescriptionFont: UIFont = UIFont(name: Serif_Regular, size: 16.0)!.upperCaseNumbers()
+	
+	static let aicTitleFont: UIFont = UIFont(name: SansSerif_Medium, size: 21.0)!.upperCaseNumbers()
+	
+	static let aicTextFont: UIFont = UIFont(name: Serif_Regular, size: 16.0)!.upperCaseNumbers()
+	
+	static let aicTextBoldFont: UIFont = UIFont(name: Serif_Bold, size: 16.0)!.upperCaseNumbers()
+	
+	static let aicTextItalicFont: UIFont = UIFont(name: Serif_Italic, size: 16.0)!.upperCaseNumbers()
+	
+	static let aicPageTitleFont: UIFont = UIFont(name: SansSerif_Book, size: 28.0)!.upperCaseNumbers()
+	
+	static let aicPageTextFont: UIFont = UIFont(name: SansSerif_Book, size: 16.0)!.upperCaseNumbers()
+	
+	static let aicButtonFont: UIFont = UIFont(name: SansSerif_Medium, size: 13.0)!.upperCaseNumbers()
 
-	static let aicNumberPadFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 30.0)!.upperCaseNumbers()
+	static let aicNumberPadFont: UIFont = UIFont(name: SansSerif_Book, size: 30.0)!.upperCaseNumbers()
     
-    static let aicMapSpacesFont: UIFont = UIFont(name: "SourceSansPro-Regular", size: 16.0)!.upperCaseNumbers()
+    static let aicMapSpacesFont: UIFont = UIFont(name: SansSerif_Medium, size: 16.0)!.upperCaseNumbers()
 	
-	static let aicMapTextFont: UIFont = UIFont(name: "SourceSansPro-Regular", size: 15.0)!.upperCaseNumbers()
+	static let aicMapTextFont: UIFont = UIFont(name: SansSerif_Medium, size: 15.0)!.upperCaseNumbers()
 	
-	static let aicMapObjectTextFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 15.0)!.upperCaseNumbers()
+	static let aicMapDepartmentTextFont: UIFont = UIFont(name: SansSerif_Book, size: 16.0)!.upperCaseNumbers()
 	
-	static let aicTitleFont: UIFont = UIFont(name: "SourceSansPro-Regular", size: 21.0)!.upperCaseNumbers()
+	static let aicMapObjectTextFont: UIFont = UIFont(name: SansSerif_Book, size: 15.0)!.upperCaseNumbers()
 	
-	static let aicTextFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 16.0)!.upperCaseNumbers()
+	static let aicPotionCreditsFont: UIFont = UIFont(name: SansSerif_Book, size: 13.0)!.upperCaseNumbers()
 	
-	static let aicDescriptionFont: UIFont = UIFont(name: "Lora-Regular", size: 16.0)!.upperCaseNumbers() //SabonNextLTPro-Regular
+	static let aicContentTitleFont: UIFont = UIFont(name: SansSerif_Book, size: 21.0)!.upperCaseNumbers()
 	
-	static let aicButtonFont: UIFont = UIFont(name: "SourceSansPro-Regular", size: 13.0)!.upperCaseNumbers()
+	static let aicHomeSeeAllFont: UIFont = UIFont(name: SansSerif_Book, size: 13.0)!.upperCaseNumbers()
 	
-	static let aicPotionCreditsFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 13.0)!.upperCaseNumbers()
+	static let aicHomeTitleFont: UIFont = UIFont(name: SansSerif_Book, size: 21.0)!.upperCaseNumbers()
 	
-	static let aicHomeCollectionTitleFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 21.0)!.upperCaseNumbers()
+	static let aicHomeSmallTitleFont: UIFont = UIFont(name: SansSerif_Book, size: 17.0)!.upperCaseNumbers()
 	
-	static let aicHomeSeeAllFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 13.0)!.upperCaseNumbers()
+	static let aicHomeShortTextFont: UIFont = UIFont(name: Serif_Regular, size: 14)!.upperCaseNumbers()
 	
-	static let aicHomeTitleFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 21.0)!.upperCaseNumbers()
+	static let aicSearchBarFont: UIFont = UIFont(name: SansSerif_Book, size: 17.0)!.upperCaseNumbers()
 	
-	static let aicHomeSmallTitleFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 17.0)!.upperCaseNumbers()
+	static let aicSearchResultsFilterFont: UIFont = UIFont(name: SansSerif_Book, size: 18.0)!.upperCaseNumbers()
 	
-	static let aicHomeShortTextFont: UIFont = UIFont(name: "Lora-Regular", size: 14)!.upperCaseNumbers()
+	static let aicSearchResultsSectionTitleFont: UIFont = UIFont(name: SansSerif_Book, size: 13.0)!.upperCaseNumbers()
 	
-	static let aicSearchBarFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 17.0)!.upperCaseNumbers()
+	static let aicSearchNoResultsMessageFont: UIFont = UIFont(name: SansSerif_BookItalic, size: 16.0)!.upperCaseNumbers()
 	
-	static let aicSearchResultsFilterFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 18.0)!.upperCaseNumbers()
+	static let aicSearchNoResultsWebsiteFont: UIFont = UIFont(name: SansSerif_BookItalic, size: 13.0)!.upperCaseNumbers()
 	
-	static let aicSearchResultsSectionTitleFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 13.0)!.upperCaseNumbers()
+	static let aicLoadingWelcomeFont: UIFont = UIFont(name: SansSerif_Book, size: 45.0)!.upperCaseNumbers()
 	
-	static let aicInfoSectionTitleFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 28.0)!.upperCaseNumbers()
+	static let aicAudioPlayerTimeRemainingFont: UIFont = UIFont(name: SansSerif_Book, size: 14.0)!.upperCaseNumbers()
 	
-	static let aicInfoSectionTextFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 16.0)!.upperCaseNumbers()
+	static let aicAudioInfoSectionTitleFont: UIFont = UIFont(name: SansSerif_Book, size: 21.0)!.upperCaseNumbers()
 	
-	static let aicCardTitleFont: UIFont = UIFont(name: "SourceSansPro-Regular", size: 21.0)!.upperCaseNumbers()
+	static let aicContentButtonTitleFont: UIFont = UIFont(name: SansSerif_Medium, size: 16.0)!.upperCaseNumbers()
 	
-	static let aicCardTextFont: UIFont = UIFont(name: "Lora-Regular", size: 16.0)!.upperCaseNumbers()
+	static let aicContentButtonSubtitleFont: UIFont = UIFont(name: SansSerif_Book, size: 16.0)!.upperCaseNumbers()
 	
-	static let aicCardTextBoldFont: UIFont = UIFont(name: "Lora-Bold", size: 16.0)!.upperCaseNumbers()
+	static let aicMemberCardLoginFieldFont: UIFont = UIFont(name: SansSerif_Book, size: 17.0)!.upperCaseNumbers()
 	
-	static let aicCardTextItalicFont: UIFont = UIFont(name: "Lora-Italic", size: 16.0)!.upperCaseNumbers()
+	static let aicMapDepartmentLabelFont: UIFont = UIFont(name: SansSerif_Book, size: 13.0)!.upperCaseNumbers()
 	
-	static let aicCardDateLocationFont: UIFont = UIFont(name: "Lora-Italic", size: 16.0)!.upperCaseNumbers()
+	static let aicTooltipDismissFont: UIFont = UIFont(name: SansSerif_Book, size: 13.0)!.upperCaseNumbers()
 	
-	static let aicSeeAllHeaderFont: UIFont = UIFont(name: "SourceSansPro-Regular", size: 21.0)!.upperCaseNumbers()
+	static let aicInfoOverlayFont: UIFont = UIFont(name: SansSerif_Book, size: 13.0)!.upperCaseNumbers()
 	
-	static let aicLanguageSelectionTitleFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 28.0)!.upperCaseNumbers()
+	static let aicSeeAllTitleFont: UIFont = UIFont(name: SansSerif_Medium, size: 17.0)!.upperCaseNumbers()
 	
-	static let aicLanguageSelectionTextFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 16.0)!.upperCaseNumbers()
-	
-	static let aicLoadingWelcomeFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 45.0)!.upperCaseNumbers()
-    
-    static let aicMiniPlayerTrackTitleFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 16.0)!.upperCaseNumbers()
-	
-	static let aicAudioPlayerTrackTitleFont: UIFont = UIFont(name: "SourceSansPro-Regular", size: 21.0)!.upperCaseNumbers()
-	
-	static let aicAudioPlayerTimeRemainingFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 14.0)!.upperCaseNumbers()
-	
-	static let aicAudioInfoSectionTitleFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 21.0)!.upperCaseNumbers()
-	
-	static let aicMapCardTitleFont: UIFont = UIFont(name: "SourceSansPro-Regular", size: 21.0)!.upperCaseNumbers()
-	
-	static let aicContentTitleFont: UIFont = UIFont(name: "SourceSansPro-Regular", size: 16.0)!.upperCaseNumbers()
-	
-	static let aicContentSubtitleFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 16.0)!.upperCaseNumbers() //IdealSans-Book
-	
-	static let aicMapCardTextFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 16.0)!.upperCaseNumbers()
-	
-	static let aicMapFloorMenuFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 16.0)!.upperCaseNumbers()
-	
-	static let aicMemberCardTitleFont: UIFont = UIFont(name: "SourceSansPro-Regular", size: 21.0)!.upperCaseNumbers()
-	
-	static let aicMemberCardLoginFieldFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 17.0)!.upperCaseNumbers()
-	
-	static let aicMapDepartmentLabelFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 13.0)!.upperCaseNumbers()
-	
-	static let aicSearchSuggestedFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 16.0)!.upperCaseNumbers() //IdealSans-Book
-	
-	static let aicSearchNoResultsMessageFont: UIFont = UIFont(name: "SourceSansPro-LightItalic", size: 16.0)!.upperCaseNumbers() //IdealSans-BookItalic
-	
-	static let aicSearchNoResultsWebsiteFont: UIFont = UIFont(name: "SourceSansPro-LightItalic", size: 13.0)!.upperCaseNumbers()
-	
-	static let aicTooltipTitleFont: UIFont = UIFont(name: "SourceSansPro-Regular", size: 21.0)!.upperCaseNumbers()
-	
-	static let aicTooltipTextFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 16.0)!.upperCaseNumbers()
-	
-	static let aicTooltipDismissFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 13.0)!.upperCaseNumbers()
-	
-	static let aicInfoOverlayFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 13.0)!.upperCaseNumbers()
-	
-	static let aicSeeAllTitleFont: UIFont = UIFont(name: "SourceSansPro-Regular", size: 17.0)!.upperCaseNumbers() //IdealSans-Medium
-	
-	static let aicSeeAllInfoFont: UIFont = UIFont(name: "SourceSansPro-Light", size: 12.0)!.upperCaseNumbers()
-	
-	static let aicTimeLocationFont: UIFont = UIFont(name: "Lora-Italic", size: 16.0)!.upperCaseNumbers()
+	static let aicSeeAllInfoFont: UIFont = UIFont(name: SansSerif_Book, size: 12.0)!.upperCaseNumbers()
 	
 	/// Font modified to use uppercase numbers
 	///

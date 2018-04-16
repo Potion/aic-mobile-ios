@@ -36,7 +36,7 @@ class MapFloorSelectorButton: UIButton {
         setTitleColor(.black, for: UIControlState())
         setTitleColor(.blue, for: UIControlState.highlighted)
 		
-		titleLabel!.font = .aicMapFloorMenuFont
+		titleLabel!.font = .aicPageTextFont
         
         backgroundColor = .white
         tag = floorNum

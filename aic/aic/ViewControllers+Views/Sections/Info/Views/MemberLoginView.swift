@@ -21,7 +21,7 @@ class MemberLoginView : UIView {
 		self.backgroundColor = .clear
 		
 		memberIDTitleLabel.text = "Member ID"
-		memberIDTitleLabel.font = .aicMemberCardTitleFont
+		memberIDTitleLabel.font = .aicTitleFont
 		memberIDTitleLabel.textColor = .black
 		memberIDTitleLabel.numberOfLines = 1
 		memberIDTitleLabel.textAlignment = .left
@@ -35,7 +35,7 @@ class MemberLoginView : UIView {
 		memberIDTextField.keyboardType = .numberPad
 		
 		memberZipCodeTitleLabel.text = "Zip Code"
-		memberZipCodeTitleLabel.font = .aicMemberCardTitleFont
+		memberZipCodeTitleLabel.font = .aicTitleFont
 		memberZipCodeTitleLabel.textColor = .black
 		memberZipCodeTitleLabel.numberOfLines = 1
 		memberZipCodeTitleLabel.textAlignment = .left

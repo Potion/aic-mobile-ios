@@ -22,13 +22,13 @@ class MemberCardView : UIView {
 		super.init(frame: CGRect.zero)
 		
 		memberNameLabel.text = "First Last"
-		memberNameLabel.font = .aicMemberCardTitleFont
+		memberNameLabel.font = .aicTitleFont
 		memberNameLabel.textColor = .black
 		memberNameLabel.numberOfLines = 1
 		memberNameLabel.textAlignment = .left
 		
 		membershipInfoLabel.text = "Member\nExpires: "
-		membershipInfoLabel.font = .aicTextFont
+		membershipInfoLabel.font = .aicPageTextFont
 		membershipInfoLabel.textColor = .black
 		membershipInfoLabel.numberOfLines = 2
 		membershipInfoLabel.textAlignment = .left

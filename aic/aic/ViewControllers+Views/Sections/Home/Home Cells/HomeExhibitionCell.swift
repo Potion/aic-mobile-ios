@@ -26,7 +26,7 @@ class HomeExhibitionCell : UICollectionViewCell {
 		exhibitionTitleLabel.textColor = .aicDarkGrayColor
 		exhibitionTitleLabel.numberOfLines = 0
 		exhibitionTitleLabel.lineBreakMode = .byTruncatingTail
-		throughDateTextView.font = .aicTimeLocationFont
+		throughDateTextView.font = .aicTextItalicFont
 		throughDateTextView.textColor = .aicDarkGrayColor
 		throughDateTextView.textContainerInset.left = -4
 	}

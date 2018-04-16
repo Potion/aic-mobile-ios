@@ -32,7 +32,7 @@ class HomeEventCell : UICollectionViewCell {
 		eventTitleLabel.textColor = .aicDarkGrayColor
 		eventTitleLabel.numberOfLines = 0
 		eventTitleLabel.lineBreakMode = .byTruncatingTail
-		shortDescriptionTextView.font = .aicDescriptionFont
+		shortDescriptionTextView.font = .aicTextFont
 		shortDescriptionTextView.textColor = .aicDarkGrayColor
 		shortDescriptionTextView.textContainerInset.left = -4
 		shortDescriptionTextView.textContainer.lineBreakMode = .byTruncatingTail

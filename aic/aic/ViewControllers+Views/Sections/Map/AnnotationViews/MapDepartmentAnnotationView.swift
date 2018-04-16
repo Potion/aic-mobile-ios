@@ -82,7 +82,7 @@ class MapDepartmentAnnotationView: MapAnnotationView {
         label.numberOfLines = 0
         
         label.text = annotation.title
-        label.font = .aicTextFont
+        label.font = .aicMapDepartmentTextFont
 		label.textAlignment = .center
         label.textColor = .white
         label.sizeToFit()
