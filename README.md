@@ -21,8 +21,9 @@ Please note that while we took steps to generalize this project, it is not meant
 	1. [Home](#home)
 	1. [Audio Guide](#audio-guide)
 	1. [Map](#map)
-	1. [Information](#information)
+	1. [Tours](#tours)
 	1. [Search](#search)
+	1. [Information](#information)
 1. [Getting Started](#getting-started)
 	1. [Prerequisites](#prerequisites)
 	1. [Installation](#installation)
@@ -36,9 +37,10 @@ Please note that while we took steps to generalize this project, it is not meant
     1. [Aligning the Map](#aligning-the-map)
 1. [Data](#data)
     1. [App Data](#app-data)
-    1. [Exhibitions](#exhibitions)
-    1. [Events](#events)
-    1. [Search](#search)
+    1. [Data Aggregator](#data-aggregator)
+    	1. [Current Exhibitions Request](#current-exhibitions-request)
+    	1. [Current Events Request](#current-events-request)
+    	1. [Search Request](#search-request)
     1. [Member Card API](#member-card-api)
 1. [External Libs](#external-libs)
 1. [Analytics](#analytics)
@@ -81,6 +83,20 @@ This app is split into four distinct sections. In the future, additional section
     </td>
   </tr>
   <tr>
+    <td><img src="Documentation/tours.png" alt="Tours Image"/></td>
+    <td valign="top">
+      <h3>Tours</h3>
+      <p>Provides custom tours with unique audio content that work in tandem with the map and guide users on a narrated journey.</p>
+    </td>
+  </tr>
+  <tr>
+    <td><img src="Documentation/search.png" alt="Search Image"/></td>
+    <td valign="top">
+      <h3>Search</h3>
+      <p>Provides the ability to search for artworks, tours and exhibitions currently on display at the museum. Using the search, users are also able to find the location on the map of artworks as well as gift shops, restrooms, dining locations and the member lounge.</p>
+    </td>
+  </tr>
+  <tr>
     <td><img src="Documentation/info.png" alt="Information Image"/></td>
     <td valign="top">
       <h3>Information</h3>
@@ -90,13 +106,6 @@ This app is split into four distinct sections. In the future, additional section
         <li>Language Settings: allowing you to switch the language of the app to English, Spanish or Chinese.</li>
         <li>Location Settings: allowing you to modify your preference for tracking your location in the museum.</li>
       </ul>
-    </td>
-  </tr>
-  <tr>
-    <td><img src="Documentation/search.png" alt="Search Image"/></td>
-    <td valign="top">
-      <h3>Search</h3>
-      <p>Provides the ability to search for artworks, tours and exhibitions currently on display at the museum. Using the search, users are also able to find the location on the map of artworks as well as gift shops, restrooms, dining locations and the member lounge.</p>
     </td>
   </tr>
 </table>
@@ -230,13 +239,6 @@ Here are the variables set through `Config.plist`:
     </td>
   </tr>
   <tr>
-    <td valign="top">feedFeaturedExhibitions</td>
-    <td valign="top">http://localhost:8888/exhibits.json</td>
-    <td valign="top">
-    <p>Your museum's event feed. See <a href="#featured-exhibitions">Featured Exhibitions</a>.</p>
-    </td>
-  </tr>
-  <tr>
     <td valign="top">appDataJSON</td>
     <td valign="top">http://localhost:8888/appData.json</td>
     <td valign="top">
@@ -309,7 +311,7 @@ The application currently uses three main data sources:
 
 The first one is a JSON document.
 
-The Data Aggregator is AIC's own API and it inlcudes endpoints to different types of data. It's fully documented here [https://github.com/art-institute-of-chicago/data-aggregator](https://github.com/art-institute-of-chicago/data-aggregator).
+The Data Aggregator is the Art Institute's main API that aggregates all different types of data used accross the museum's digital applications and websites.
 
 For membership the app is querying a custom SOAP API. This data is meant to be managed through the companion CMS, but as long as the expected data format is followed, feel free to serve the files statically (cf. [SampleData](SampleData)) or roll your own CMS.
 
@@ -317,7 +319,7 @@ For membership the app is querying a custom SOAP API. This data is meant to be m
 
 ### App Data
 
-The main app data is pulled from an external-facing server each time the application loads. This data includes galleries, objects (artworks), tours, audio files, map floors overlays, map annotations, and other data api URLs. We've included [appData.json](SampleData/appData.json) to demonstrate how "real" data would look like.
+The main app data is pulled from an external-facing server each time the application loads. This data includes galleries, objects (artworks), tours, audio files, map floors overlays, map annotations, and Data Aggregator API urls. We've included [appData.json](SampleData/appData.json) to demonstrate how "real" data would look like.
 
 Here's a breakdown of the expected data format:
 
@@ -464,67 +466,89 @@ For more details, see [AppDataParser.swift](aic/aic/Data/AppDataParser.swift). I
 
 
 
-### Data API
+### Data Aggregator
 
-The `appData.json` file contains a list of URLs and API endpoints used throughout the app for retreiving the latest events and exhibitions as well as performing searches.
+The Data Aggregator is the Art Institute's main API that aggregates all different types of data used accross the museum's digital applications and websites. The API is an open source project and its repository can be found here: 
 
+[https://github.com/art-institute-of-chicago/data-aggregator](https://github.com/art-institute-of-chicago/data-aggregator)
 
-
-#### Exhibitions
-
-This data feed is being recycled from the Art Institute of Chicago's website. It provides a list of current exhibitions, cross-referencing gallery and floor locations from the App Data file. Here is the annotated data structure:
+From the `appData.json` file the iOS app retreives the URL of the Data Aggregator (`data_api_url`) and the API endpoints used throughout the app for retreiving the latest events and exhibitions as well as performing searches for tours, artworks and exhibitions.
 
 ```javascript
-[
-  {
-
-    "title": "Sample Exhibit",
-
-    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed est purus, mattis sed molestie ac, ultricies quis mi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
-
-    // Both of these are optional: without either, "body" is used
-    "intro_html": "Optional. Shows before you open the exhibit.",
-    "description_html": "Optional. Long-form text that shows when you open the exhibit.",
-
-    // Can have multiple galleries, separated by ", " but only the first one matters
-    // Should match one of the "galleries" defined in appData.json
-    "exhibition_location": "Ryerson Library Study Room",
-
-    // Should have two parts, separated by " to "
-    // Only the second half matters: outputs "Through [date]"
-    "date": "2017-03-20 00:00:00 to 2020-12-31 00:00:00",
-
-    // Used on the map in a circle
-    "thumbnail": "http://localhost:8888/placeholder.png",
-
-    // Used in the "On View" section
-    "feature_image_mobile": "http://localhost:8888/placeholder.png",
-
-    // This text appears overlayed over the tour image in "On View"
-    // We use it to mark "featured" or "new" items
-    "tour_banner": "Banner"
-
-  }
-]
+"data": {
+	// Data Aggregator API URL
+	"data_api_url": "http://localhost:8888",
+	
+	// Data Aggregator API endpoints
+	"exhibitions_endpoint": "/search/exhibitions.json",
+	"artworks_endpoint": "/artworks",
+	"galleries_endpoint": "/galleries",
+	"images_endpoint": "/images",
+	"events_endpoint": "/search/events.json",
+	"autocomplete_endpoint: "/autocomplete",
+	"tours_endpoint": "/tours",
+	"multisearch_endpoint": "/search/msearch.json",
+	
+	// URL to the museum web page where you can become a member
+	"membership_url": "http://localhost:8888",
+	
+	// URL to the museum website
+	"website_url": "http://localhost:8888",
+	
+	// URL to the museum web page where you can buy tickets
+	"tickets_url": "http://localhost:8888",
+	
+	// URL to download the museum artworks images
+	"image_server_url": "http://localhost:8888"
+}
 ```
 
-#### Events
+Depending on the specific data needs, the app performs GET or POST methods to obtain that data. These methods are using [ElasticSearch](https://www.elastic.co/) syntax and POST requests are performed by sending query parameters defined in a dictionary and encoded in JSON format.
 
 
 
-#### Search
+#### Current Exhibitions Request
+
+The iOS app is sending POST requests to the Data Aggregator to get a list of exhibitions currently open at the museum.
+
+[Loading current exhibitions](aic/aic/Data/AppDataManager.swift#L240)
+
+In order to demonstrate how the Data Aggregator API returns data for the latest exhibitions and events, we included a JSON file as an example of API response in [SampleData/search/exhibitions.json](SampleData/search/exhibitions.json)
 
 
 
-For more details, see [AppDataParser.swift](aic/aic/Data/AppDataParser.swift#L53).
+#### Current Events Request
+
+The Data Aggregator is also queried to get a list of events for the next 2 weeks.
+
+[Loading current events](aic/aic/Data/AppDataManager.swift#L304)
+
+Here's an example of API response for current events: [SampleData/search/events.json](SampleData/search/events.json)
 
 
+
+#### Search Request
+
+All the search requests to the Data Aggregator are performed using the `multisearch_endpoint` of the API.
+Another endpoint that the app uses is the `autocomplete_endpoint` which is returning autocomplete strings to provide search suggestions.
+
+For more details about all the requests used for the search functionality, see [SearchDataManager.swift](aic/aic/Data/SearchDataManager.swift).
+
+The multi-search is a request that contains 3 different queries, each one for a different content type: artworks, tours, exhibitions.
+
+The Data Aggregator API returns data for each content type in a single JSON file, with 3 separate arrays of results, one per content type. An example of multi-search response can be found in [SampleData/search/msearch.json](SampleData/search/msearch.json)
+
+---------------------
+
+**Note:** The `appData.json` provided in the SampleData has the `exhibitions_endpoint`, `events_endpoint` and `multisearch_endpoint` pointing directly to the sample json files. These should not point to static files, but to API endpoints on a server, which is supposed to process the request and return data for your institution.
+
+---------------------
 
 ### Member Card API
 
 The member card information is validated through a simple SOAP API that exists on the Art Institute of Chicago's server. Given a member's ID number and ZIP code, this API attempts to validate the user and returns their information if successful.
 
-Our membership system is based on Gateway's [Galaxy Connect](http://www.gatewayticketing.com/solutions/membership/). You will likely have to substantially modify the membership components of this app to suit your institution. Because this functionality is so specific to the Art Institute, we disabled the member card view by default. All the relevant code is still there, however. Toggle `showMemberCardView` in [InfoSectionView.swift](aic/aic/ViewControllers/Sections/About/InfoSectionView.swift#L16) to get started.
+Our membership system is based on Gateway's [Galaxy Connect](http://www.gatewayticketing.com/solutions/membership/). You will likely have to substantially modify the membership components of this app to suit your institution. This functionality is very specific to the Art Institute.
 
 
 
